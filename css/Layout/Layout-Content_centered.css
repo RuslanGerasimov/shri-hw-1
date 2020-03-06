@@ -1,0 +1,14 @@
+.Layout-Content_centered {
+    flex-direction: column;
+    align-items: center;
+}
+.Layout-Content_centered:before {
+    content: "";
+    position: relative;
+    flex-grow: 0.94;
+}
+.Layout-Content_centered:after {
+    content: "";
+    position: relative;
+    flex-grow: 1.06;
+}

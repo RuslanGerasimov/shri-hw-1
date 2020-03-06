@@ -1,0 +1,138 @@
+:root {
+    --light-gray: #E6E6E6;
+    --bule-gray-50: #F0F2F3;
+    --bule-gray-75: #F2F2F2;
+    --bule-gray-100: #DBDBDB;
+    --bule-gray-200: #B3B3B3;
+    --bule-gray-450: #7F7F7F;
+    --bule-gray-500: #7F8285;
+    --project-yellow: #FFCC00;
+    --project-yellow_dark: #F2C200;
+    --project-yellow_brown: #B38F00;
+    --red: #E00000;
+    --black: #000000;
+
+    /*fonts*/
+    --font-family_main: "YS Text";
+    --text-color-main: var(--black);
+    --text-color_secondary: var(--bule-gray-500);
+
+    /*spaces*/
+    --space_xxs: 10px;
+    --space_xs: 12px;
+    --space_s: 13px;
+    --space_m: 15px;
+    --space_l: 20px;
+    --space_xl: 24px;
+    --space_xxl: 25px;
+    --space_xxxl: 32px;
+
+    /*font sizes*/
+    --text_s: 13px;
+    --text_l: 18px;
+    --text_xl: 24px;
+
+    /*heights*/
+    --height_s: 22px;
+    --height_m: 28px;
+    --height_l: 36px;
+
+    /*Sizes*/
+    --workarea-width: 824px;
+    /*--workarea-width: 80%;*/
+    --line-height_s: 16px;
+    --line-height_m: 18px;
+
+    /*FOOTER*/
+    --footer-link-size: var(--text_s);
+    --footer-height: 32px;
+    --footer-link-line-height: var(--line-height_s);
+    --footer-link-line-height_copyright: var(--line-height_m);
+    --links-color: var(--text-color_secondary);
+    --links-hover: var(--red);
+    --links-active: var(--red);
+    --footer-background: var(--bule-gray-50);
+    --footer_flex-direction: "row";
+
+    /*HEADER*/
+    --header-space-vh: var(--space_xxs);
+    --logo-color: var(--bule-gray-500);
+    --logo-color_detail: var(--bule-gray-500);
+    --logo-text-size: var(--text_xl);
+    --logo-height_common: var(--height_m);
+    --logo-height_detail: var(--height_l);
+
+    /*BUTTON*/
+    --button-text_display: "inline-block";
+    --button-space: var(--space_s);
+    --button-space_large: var(--space_l);
+    --button-space-icon: var(--space_xxl);
+    --button-text-size: var(--text_s);
+    --button-height: var(--height_m);
+    --button-height_large: var(--height_l);
+    --button-background-color: var(--light-gray);
+    --button-background-color_disabled: var(--bule-gray-75);
+    --button-color_disabled: var(--bule-gray-450);
+    --button-background-color_hover: var(--bule-gray-100);
+    --button-stroke-color_active: var(--bule-gray-200);
+    --button-background-color_primary: var(--project-yellow);
+    --button-background-color_primary_hover: var(--project-yellow_dark);
+    --button-stroke-color_primary_active: var(--project-yellow_brown);
+    --icon-settings: url("../../img/icons/settings.svg");
+    --icon-play: url("../../img/icons/play.svg");
+    --button-icon: var(--icon-play);
+
+    /*ACTION CARD*/
+    --action-card_image-size: 124px;
+    --action-card_max-width: 264px;
+    --action-card_image-background: url("../../img/icons/service.svg");
+    --action-card_image-space-bottom: var(--space_xxxl);
+    --action-card_description-space-bottom: var(--space_xl);
+    --action-card_text-size: var(--text_s);
+    --action-card_font-family: var(--font-family_main);
+    --action-card_color: var(--text-color-main);
+}
+
+/*From bootstrap*/
+@media (max-width: 575.98px) {
+    :root {
+        --workarea-width: calc(100% - 32px);
+
+        /*HEADER*/
+        --header-space-vh: var(--space_xs);
+        --logo-text-size: var(--text_l);
+        --logo-height_common: var(--height_s);
+        --logo-height_detail: var(--height_s);
+
+        /*FOOTER*/
+        --footer-link-line-height: var(--line-height_m);
+        --footer-height: 44px;
+        --footer_flex-direction: "column";
+
+        /*BUTTON*/
+        --button-text_display: none;
+
+    }
+
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("../fonts/PyVcRbwHetz0gOVWLonWH7Od8zM.woff2") format("woff2"), url("../fonts/bIx8jOfCEfR-mECoDUEZywDBuHA.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("../fonts/7_GKBdKFbUPzKlghJRv55xgz0FQ.woff2") format("woff2"), url("../fonts/SmqPmIMEXrW4lOY8QrhTUVDbrro.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("../fonts/6Roy0LCd05cK4nNCipgzheYcNVU.woff2") format("woff2"), url("../fonts/KtHQR1erf3spayoIM4M4ngg0e2E.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}

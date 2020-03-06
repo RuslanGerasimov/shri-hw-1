@@ -1,0 +1,7 @@
+.Header {
+    max-width: var(--workarea-width);
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: var(--header-space-vh) 0;
+}

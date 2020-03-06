@@ -1,0 +1,6 @@
+.Header-Logo {
+    font-family: var(--font-family_main);
+    color: var(--logo-color);
+    font-size: var(--logo-text-size);
+    line-height: var(--logo-height_common);
+}

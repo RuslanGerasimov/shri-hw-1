@@ -1,0 +1,12 @@
+.Button_large {
+    min-width: var(--button-height_large);
+    height: var(--button-height_large);
+}
+
+.Button_large:hover {
+    --button-background-color_hover: var(--button-background-color_primary_hover);
+}
+
+.Button_large:active, .Button_large:focus {
+    --button-stroke-color_active: var(--button-stroke-color_primary_active);
+}
