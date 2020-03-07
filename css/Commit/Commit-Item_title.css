@@ -1,0 +1,5 @@
+.Commit-Item_title {
+    font-size: var(--commit_title-font-size);
+    line-height: var(--commit_title-line-height);
+    margin-left: var(--commit_title-left-space);
+}

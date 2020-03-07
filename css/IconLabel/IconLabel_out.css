@@ -1,0 +1,7 @@
+.IconLabel_out {
+    padding-left: 0;
+}
+
+.IconLabel_out::before {
+    left: calc(-1 * (var(--icon_size) + var(--icon_label-space)));
+}

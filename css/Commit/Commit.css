@@ -1,0 +1,19 @@
+.Commit {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--commit_vertical-space) var(--commit_right-space) var(--commit_vertical-space) var(--commit_left-space);
+    box-shadow: 0 1px 1px var(--commit_shadow-color), 0 0 1px var(--commit_shadow-color);
+    border-radius: var(--commit_border-radius);
+    cursor: pointer;
+}
+
+.Commit:hover {
+    box-shadow: 0 2px 8px var(--commit_shadow-color), 0 0 1px var(--commit_shadow-color);
+}
+
+@media (max-width: 575.98px) {
+    .Commit {
+        flex-direction: column;
+    }
+}

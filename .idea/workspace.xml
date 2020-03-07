@@ -3,17 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d67f0b6b-6f22-405d-99e2-0c69b6e33063" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/ActionCard/ActionCard-Description.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/ActionCard/ActionCard-Description.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Button/Button-Text.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Button/Button-Text.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Button/Button.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Button/Button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Button/Button_large.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Button/Button_large.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Button/Button_primary.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Button/Button_primary.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Footer/Footer-Item.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Footer/Footer-Item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Header/Header-Logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Header/Header-Logo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Layout/Layout-Content.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Layout/Layout-Content.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Layout/Layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Layout/Layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/Theme/Theme_default.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Theme/Theme_default.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/vars.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/vars.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +38,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/css/Form" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/css/IconLabel" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
@@ -55,11 +46,11 @@
       <recent name="D:\Projects\shri-1\css\InputField" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Projects\shri-1\css\Form" />
+      <recent name="D:\Projects\shri-1\css\IconLabel" />
       <recent name="D:\Projects\shri-1" />
+      <recent name="D:\Projects\shri-1\css\Form" />
       <recent name="D:\Projects\shri-1\css\InputField" />
       <recent name="D:\Projects\shri-1\fonts" />
-      <recent name="D:\Projects\shri-1\css\Layout" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -87,7 +78,7 @@
       <workItem from="1583430945954" duration="7089000" />
       <workItem from="1583495271535" duration="25324000" />
       <workItem from="1583527447935" duration="2000" />
-      <workItem from="1583567198944" duration="20519000" />
+      <workItem from="1583567198944" duration="35438000" />
     </task>
     <servers />
   </component>
@@ -103,14 +94,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583527133823" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583617480421">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583617480421" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1583568070098">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583568070098" />
-    <state x="656" y="257" width="737" height="596" key="find.popup" timestamp="1583596440178">
+    <state x="656" y="256" width="737" height="596" key="find.popup" timestamp="1583615915305">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="257" width="737" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583596440178" />
+    <state x="656" y="256" width="737" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583615915305" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1583501347244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

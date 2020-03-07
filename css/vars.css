@@ -8,13 +8,17 @@
     --blue-gray-200: #B3B3B3;
     --blue-gray-450: #7F7F7F;
     --blue-gray-500: #7F8285;
+    --blue-gray-550: #595959;
     --blue-gray-600: #434445;
     --project-yellow: #FFCC00;
     --project-yellow_dark: #F2C200;
     --project-yellow_brown: #B38F00;
     --red: #E00000;
     --error-red: #FF3333;
+    --success-green: #00B341;
+    --waiting-orange: #FF9A00;
     --black: #000000;
+    --gray-opacity: rgba(67, 68, 69, 0.3);
 
     /*fonts*/
     --font-family_main: "YS Text";
@@ -30,11 +34,14 @@
     --space_s: 13px;
     --space_m: 14px;
     --space_l: 15px;
-    --space_xl: 20px;
-    --space_xxl: 24px;
-    --space_xxxl: 25px;
-    --space_xxxxl: 32px;
-    --space_xxxxxxl: 52px;
+    --space_xl: 16px;
+    --space_xxl: 20px;
+    --space_xxxl: 24px;
+    --space_xxxxl: 25px;
+    --space_xxxxxl: 32px;
+    --space_xxxxxxl: 36px;
+    --space_xxxxxxxxl: 52px;
+    --space_xxxxxxxxxl: 56px;
 
     /*font sizes*/
     --text_s: 13px;
@@ -43,7 +50,9 @@
     --text_xl: 24px;
 
     /*heights*/
-    --height_s: 22px;
+    --height_xxs: 16px;
+    --height_xs: 22px;
+    --height_s: 24px;
     --height_m: 28px;
     --height_l: 36px;
 
@@ -82,7 +91,7 @@
     --input-input_space-bottom: var(--space_xxxs);
     --input_compulsory-sign-color: var(--error-red);
     --input_clear-icon-size: var(--height_l);
-    --input_inline-width: var(--space_xxxxxxl);
+    --input_inline-width: var(--space_xxxxxxxxl);
     --input_inline-horizontal-space: var(--space_xxxs);
 
     /*HEADER*/
@@ -97,8 +106,8 @@
     /*BUTTON*/
     --button-text_display: "inline-block";
     --button-space: var(--space_s);
-    --button-space_large: var(--space_xl);
-    --button-space-icon: var(--space_xxxl);
+    --button-space_large: var(--space_xxl);
+    --button-space-icon: var(--space_xxxxl);
     --button-text-size: var(--text_s);
     --button-height: var(--height_m);
     --button-height_large: var(--height_l);
@@ -113,14 +122,21 @@
     --icon-settings: url("../../img/icons/settings.svg");
     --icon-clear: url("../../img/icons/clear.svg");
     --icon-play: url("../../img/icons/play.svg");
+    --icon-author: url("../../img/icons/man.svg");
+    --icon-branch: url("../../img/icons/branch.svg");
+    --icon-success: url("../../img/icons/success.svg");
+    --icon-waiting: url("../../img/icons/waiting.svg");
+    --icon-error: url("../../img/icons/error.svg");
+    --icon-timeInterval: url("../../img/icons/timeInterval.svg");
+    --icon-date: url("../../img/icons/date.svg");
     --button-icon: var(--icon-play);
 
     /*ACTION CARD*/
     --action-card_image-size: 124px;
     --action-card_max-width: 264px;
     --action-card_image-background: url("../../img/icons/service.svg");
-    --action-card_image-space-bottom: var(--space_xxxxl);
-    --action-card_description-space-bottom: var(--space_xxl);
+    --action-card_image-space-bottom: var(--space_xxxxxl);
+    --action-card_description-space-bottom: var(--space_xxxl);
 
     /*FORM*/
     --form-width: 474px;
@@ -141,6 +157,30 @@
     --form-field_bottom: var(--space_xxxs);
     --form-body_vertical-space: var(--space_xs);
 
+    /*ICON LABELS*/
+    --icon_size: var(--height_xxs);
+    --icon_label-space: var(--space_xxxxxs);
+    --icon_label-line-height: var(--line-height_s);
+    --icon_label-font-size: var(--font-size_default);
+    --icon_label-font-color: var(--text-color_main);
+    --icon_image-path: var(--icon-success);
+
+    /*COMMIT*/
+    --commit_vertical-space: var(--space_xs);
+    --commit_left-space: var(--space_xxxxxxxxxl);
+    --commit_right-space: var(--space_xxxl);
+    --commit_shadow-color: var(--gray-opacity);
+    --commit_border-radius: var(--space_xxxxs);
+    --commit_title-font-size: var(--text_m);
+    --commit_title-left-space: var(--space_xxxxxs);
+    --commit_commit-id-color: var(--blue-gray-550);
+    --commit_commit-id-line-height: var(--line-height_m);
+    --commit_commit-id-left-space: var(--space_xxxxxs);
+    --commit_author-left-space: var(--space_xxxs);
+    --commit_title-line-height: var(--line-height_l);
+    --commit_content-row-space-bottom: var(--space_xxxs);
+    --commit_date-row-space-bottom: var(--space_xs);
+    --commit_content-border-bottom: var(--blue-gray-50);
 }
 
 /*From bootstrap*/
@@ -152,8 +192,8 @@
         /*HEADER*/
         --header-space-vh: var(--space_xs);
         --logo-text-size: var(--text_l);
-        --logo-height_common: var(--height_s);
-        --logo-height_detail: var(--height_s);
+        --logo-height_common: var(--height_xs);
+        --logo-height_detail: var(--height_xs);
 
         /*FOOTER*/
         --footer-link-line-height: var(--line-height_m);
@@ -169,6 +209,20 @@
         --form-body_vertical-space: var(--space_xxxxxs);
         --input_inline-horizontal-space: var(--space_xxxs);
 
+        /*ICONS*/
+        --icon-success: url("../../img/icons/success_mobile.svg");
+        --icon-waiting: url("../../img/icons/waiting_mobile.svg");
+        --icon-error: url("../../img/icons/error_mobile.svg");
+
+        /*COMMIT*/
+        --commit_author-left-space: 0;
+        --commit_title-left-space: 0;
+        --commit_vertical-space: var(--space_xl);
+        --commit_right-space: var(--space_xs);
+        --commit_datetime-horizontal-space: var(--space_xxxs);
+        --commit_left-space: var(--space_xxxxxxl);
+        --commit_items-top-space: var(--space_xxxs);
+        --commit_date-row-space-bottom: 0;
     }
 
 }

@@ -1,0 +1,16 @@
+.Commit-DateTime {
+    margin-bottom: var(--commit_date-row-space-bottom);
+}
+
+.Commit-DateTime:last-child {
+    margin-bottom: 0;
+}
+@media (max-width: 575.98px) {
+    .Commit-DateTime {
+        margin-left: var(--commit_datetime-horizontal-space);
+    }
+
+    .Commit-DateTime:first-child {
+        margin-left: 0;
+    }
+}

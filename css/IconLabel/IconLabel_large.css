@@ -1,0 +1,6 @@
+.IconLabel_large {
+    --icon_label-line-height: var(--line-height_l);
+    --icon_size: var(--height_s);
+    --icon_label-space: var(--space_xxxs);
+    --icon_label-font-size: var(--text_l);
+}
