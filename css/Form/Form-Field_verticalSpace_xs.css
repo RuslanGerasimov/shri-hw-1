@@ -1,0 +1,4 @@
+.Form-Field_verticalSpace_xs {
+    padding-top: var(--form-inline-input_vertical-space);
+    padding-bottom: var(--form-inline-input_vertical-space);
+}

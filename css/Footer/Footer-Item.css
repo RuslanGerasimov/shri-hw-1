@@ -5,6 +5,7 @@
     font-family: var(--font-family_main);
     font-size: var(--footer-link-size);
     line-height: var(--footer-link-line-height);
+    letter-spacing: var(--footer-link_letter-spacing);
 }
 
 .Footer-Item:hover {

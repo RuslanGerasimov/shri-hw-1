@@ -1,0 +1,4 @@
+.InputField-Label {
+    padding-bottom: var(--input-label_space-bottom);
+    /*padding-top: var(--input-label_space-top);*//*TODO: Delete*/
+}

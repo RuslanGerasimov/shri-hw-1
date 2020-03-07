@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input</title>
+    <link rel="stylesheet" href="css/vars.css">
+    <link rel="stylesheet" href="css/Theme/Theme.css">
+    <link rel="stylesheet" href="css/Theme/Theme_default.css">
+
+    <link rel="stylesheet" href="css/InputField/InputField.css">
+    <link rel="stylesheet" href="css/InputField/InputField_compulsory.css">
+    <link rel="stylesheet" href="css/InputField/InputField_inline.css">
+    <link rel="stylesheet" href="css/InputField/InputField-Label.css">
+    <link rel="stylesheet" href="css/InputField/InputField-InputBox.css">
+    <link rel="stylesheet" href="css/InputField/InputField-Input.css">
+    <link rel="stylesheet" href="css/InputField/InputField-ClearIcon.css">
+    <link rel="stylesheet" href="css/InputField/InputField-ClearIcon_visible.css">
+
+</head>
+<body>
+<div class="Theme Theme_default">
+    <div class="InputField">
+        <label for="inp1" class="InputField-Label">GitHub repository</label>
+        <input id="inp1" type="text" class="InputField-Input" placeholder="test">
+    </div>
+    <div class="InputField InputField_compulsory">
+        <label for="inp2" class="InputField-Label">Build command</label>
+        <div class="InputField-InputBox">
+            <input id="inp2" type="text" class="InputField-Input InputField-Input_fulfilled" placeholder="command to build">
+            <div class="InputField-ClearIcon InputField-ClearIcon_visible"></div>
+        </div>
+    </div>
+    <div class="InputField InputField_inline">
+        <label for="inp3" class="InputField-Label">GitHub repository</label>
+        <div class="InputField-InputBox">
+            <input id="inp3" type="text" class="InputField-Input" value="10" placeholder="test">
+        </div>
+        <div class="InputField-Unit">minutes</div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+.Form-HeaderItem_title {
+    line-height: var(--form-name_line-height);
+    color: var(--form-name_color);
+    letter-spacing: var(--form-name_letter-spacing);
+    font-size: var(--form-name_font-size);
+    font-weight: 700;
+    padding-bottom: var(--form-name_padding-bottom);
+}

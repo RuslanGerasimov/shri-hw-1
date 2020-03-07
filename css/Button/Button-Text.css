@@ -10,3 +10,9 @@
 .Button_large > .Button-Text {
     padding: 0 var(--button-space_large);
 }
+
+@media (max-width: 575.98px) {
+    .Button-Text {
+        margin: 0 auto;
+    }
+}

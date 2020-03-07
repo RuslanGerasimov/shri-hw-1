@@ -1,0 +1,17 @@
+.InputField_inline {
+    flex-direction: row;
+    align-items: center;
+}
+
+.InputField_inline > .InputField-InputBox {
+    width: var(--input_inline-width);
+    padding: 0 var(--input_inline-horizontal-space);
+}
+
+.InputField_inline .InputField-Input {
+    text-align: right;
+}
+
+.InputField_inline .InputField-Label {
+    padding-bottom: 0;
+}

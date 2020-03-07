@@ -1,4 +1,7 @@
 .Layout-Content {
     display: flex;
     flex-grow: 1;
+    width: 100%;
+    max-width: var(--workarea-width);
+    padding-top: var(--main-cintent_top-space);
 }

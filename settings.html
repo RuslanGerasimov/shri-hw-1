@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" href="css/vars.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Theme/Theme.css">
+    <link rel="stylesheet" href="css/Theme/Theme_default.css">
+
+    <link rel="stylesheet" href="css/Layout/Layout.css">
+    <link rel="stylesheet" href="css/Layout/Layout-Header.css">
+    <link rel="stylesheet" href="css/Layout/Layout-Footer.css">
+    <link rel="stylesheet" href="css/Layout/Layout-Content.css">
+    <link rel="stylesheet" href="css/Layout/Layout-Content_centered.css">
+
+    <link rel="stylesheet" href="css/Header/Header.css">
+    <link rel="stylesheet" href="css/Header/Header-Logo.css">
+
+    <link rel="stylesheet" href="css/Button/Button.css">
+    <link rel="stylesheet" href="css/Button/Button_primary.css">
+    <link rel="stylesheet" href="css/Button/Button_large.css">
+    <link rel="stylesheet" href="css/Button/Button-Icon.css">
+    <link rel="stylesheet" href="css/Button/Button-Icon_type_play.css">
+    <link rel="stylesheet" href="css/Button/Button-Icon_type_settings.css">
+    <link rel="stylesheet" href="css/Button/Button-Text.css">
+
+    <link rel="stylesheet" href="css/Footer/Footer.css">
+    <link rel="stylesheet" href="css/Footer/Footer-Item.css">
+    <link rel="stylesheet" href="css/Footer/Footer-Item_copyright.css">
+    <link rel="stylesheet" href="css/Footer/Footer-Content.css">
+    <link rel="stylesheet" href="css/Footer/Footer-Links.css">
+    <link rel="stylesheet" href="css/Footer/Footer-Links_copyright.css">
+
+    <link rel="stylesheet" href="css/ActionCard/ActionCard.css">
+    <link rel="stylesheet" href="css/ActionCard/ActionCard-Image.css">
+    <link rel="stylesheet" href="css/ActionCard/ActionCard-Description.css">
+    <link rel="stylesheet" href="css/ActionCard/ActionCard-Button.css">
+    <link rel="stylesheet" href="css/Form/Form.css">
+    <link rel="stylesheet" href="css/Form/Form-Field.css">
+    <link rel="stylesheet" href="css/Form/Form-Field_verticalSpace_xs.css">
+    <link rel="stylesheet" href="css/Form/Form-Header.css">
+    <link rel="stylesheet" href="css/Form/Form-HeaderItem.css">
+    <link rel="stylesheet" href="css/Form/Form-HeaderItem_title.css">
+    <link rel="stylesheet" href="css/Form/Form-Button.css">
+    <link rel="stylesheet" href="css/Form/Form-Footer.css">
+    <link rel="stylesheet" href="css/Form/Form-Body.css">
+
+    <link rel="stylesheet" href="css/InputField/InputField.css">
+    <link rel="stylesheet" href="css/InputField/InputField_compulsory.css">
+    <link rel="stylesheet" href="css/InputField/InputField_inline.css">
+    <link rel="stylesheet" href="css/InputField/InputField-Label.css">
+    <link rel="stylesheet" href="css/InputField/InputField-InputBox.css">
+    <link rel="stylesheet" href="css/InputField/InputField-Input.css">
+    <link rel="stylesheet" href="css/InputField/InputField-ClearIcon.css">
+    <link rel="stylesheet" href="css/InputField/InputField-ClearIcon_visible.css">
+</head>
+<body>
+    <div class="Layout Theme Theme_default">
+        <div class="Header Layout-Header">
+            <div class="Header-Logo">
+                School CI server
+            </div>
+            <div class="Header-Buttons"></div>
+        </div>
+        <div class="Layout-Content">
+            <div class="Form">
+                <div class="Form-Header">
+                    <div class="Form-HeaderItem Form-HeaderItem_title">Settings</div>
+                    <div class="Form-HeaderItem">Configure repository connection and synchronization settings.</div>
+                </div>
+                <div class="Form-Body">
+                    <div class="Form-Field">
+                        <div class="InputField InputField_compulsory">
+                            <label for="githubRep" class="InputField-Label">GitHub repository</label>
+                            <div class="InputField-InputBox">
+                                <input id="githubRep" type="text" class="InputField-Input " placeholder="user-name/repo-name">
+                                <div class="InputField-ClearIcon"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Form-Field">
+                        <div class="InputField">
+                            <label for="command" class="InputField-Label">Build command</label>
+                            <div class="InputField-InputBox">
+                                <input id="command" type="text" class="InputField-Input "
+                                       value="npm ci && npm run build">
+                                <div class="InputField-ClearIcon InputField-ClearIcon_visible"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Form-Field">
+                        <div class="InputField">
+                            <label for="mainBranch" class="InputField-Label">Main branch</label>
+                            <div class="InputField-InputBox">
+                                <input id="mainBranch" type="text" class="InputField-Input " value="master " autofocus>
+                                <div class="InputField-ClearIcon InputField-ClearIcon_visible"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Form-Field Form-Field_verticalSpace_xs">
+                        <div class="InputField InputField_inline">
+                            <label for="synchInterval" class="InputField-Label">Synchronize every</label>
+                            <div class="InputField-InputBox">
+                                <input id="synchInterval" type="text" class="InputField-Input " value="10">
+                            </div>
+                            <div class="InputField-Unit">minutes</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Form-Footer">
+                    <button class="Form-Button Button Button_large Button_primary">
+                        <span class="Button-Text">Save</span>
+                    </button>
+                    <button class="Form-Button Button Button_large">
+                        <span class="Button-Text">Cancel</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="Layout-Footer Footer">
+            <div class="Footer-Content">
+                <div class="Footer-Links">
+                    <div class="Footer-Item">Support</div>
+                    <div class="Footer-Item">Learning</div>
+                </div>
+                <div class="Footer-Links Footer-Links_copyright">
+                    <div class="Footer-Item Footer-Item_copyright">© 2020 Your Name</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

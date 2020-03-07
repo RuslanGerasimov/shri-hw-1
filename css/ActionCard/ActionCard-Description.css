@@ -1,7 +1,5 @@
 .ActionCard-Description {
-    font-family: var(--font-family_main);
-    font-size: var(--action-card_text-size);
-    color: var(--action-card_color);
     margin-bottom: var(--action-card_description-space-bottom);
     text-align: center;
+    line-height: 125%;
 }

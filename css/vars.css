@@ -1,34 +1,44 @@
 :root {
     --light-gray: #E6E6E6;
-    --bule-gray-50: #F0F2F3;
-    --bule-gray-75: #F2F2F2;
-    --bule-gray-100: #DBDBDB;
-    --bule-gray-200: #B3B3B3;
-    --bule-gray-450: #7F7F7F;
-    --bule-gray-500: #7F8285;
+    --blue-gray-50: #F0F2F3;
+    --blue-gray-75: #F2F2F2;
+    --blue-gray-90: #D9D9D9;
+    --blue-gray-100: #DBDBDB;
+    --blue-gray-150: #CFCFCF;
+    --blue-gray-200: #B3B3B3;
+    --blue-gray-450: #7F7F7F;
+    --blue-gray-500: #7F8285;
+    --blue-gray-600: #434445;
     --project-yellow: #FFCC00;
     --project-yellow_dark: #F2C200;
     --project-yellow_brown: #B38F00;
     --red: #E00000;
+    --error-red: #FF3333;
     --black: #000000;
 
     /*fonts*/
     --font-family_main: "YS Text";
-    --text-color-main: var(--black);
-    --text-color_secondary: var(--bule-gray-500);
+    --text-color_main: var(--black);
+    --text-color_secondary: var(--blue-gray-500);
 
     /*spaces*/
+    --space_xxxxxs: 4px;
+    --space_xxxxs: 6px;
+    --space_xxxs: 8px;
     --space_xxs: 10px;
     --space_xs: 12px;
     --space_s: 13px;
-    --space_m: 15px;
-    --space_l: 20px;
-    --space_xl: 24px;
-    --space_xxl: 25px;
-    --space_xxxl: 32px;
+    --space_m: 14px;
+    --space_l: 15px;
+    --space_xl: 20px;
+    --space_xxl: 24px;
+    --space_xxxl: 25px;
+    --space_xxxxl: 32px;
+    --space_xxxxxxl: 52px;
 
     /*font sizes*/
     --text_s: 13px;
+    --text_m: 15px;
     --text_l: 18px;
     --text_xl: 24px;
 
@@ -37,11 +47,19 @@
     --height_m: 28px;
     --height_l: 36px;
 
+    /*letter-spacing*/
+    --letter-spacing_xxs: 0.06px;
+    --letter-spacing_s: 0.25px;
+
     /*Sizes*/
     --workarea-width: 824px;
     /*--workarea-width: 80%;*/
     --line-height_s: 16px;
     --line-height_m: 18px;
+    --line-height_l: 20px;
+
+    /*LAYOUT*/
+    --main-cintent_top-space: var(--space_xs);
 
     /*FOOTER*/
     --footer-link-size: var(--text_s);
@@ -51,34 +69,49 @@
     --links-color: var(--text-color_secondary);
     --links-hover: var(--red);
     --links-active: var(--red);
-    --footer-background: var(--bule-gray-50);
+    --footer-background: var(--blue-gray-50);
     --footer_flex-direction: "row";
+    --footer-link_letter-spacing: var(--letter-spacing_xxs);
+
+    /*FIELD_INPUT*/
+    --input_height: var(--height_l);
+    --input_horizontal-space: var(--space_s);
+    --input_placeholder-color: var(--form-input_placeholder-color);
+    --input-label_space-bottom: var(--space_xxxxs);
+    --input-label_space-top: var(--space_xxs);
+    --input-input_space-bottom: var(--space_xxxs);
+    --input_compulsory-sign-color: var(--error-red);
+    --input_clear-icon-size: var(--height_l);
+    --input_inline-width: var(--space_xxxxxxl);
+    --input_inline-horizontal-space: var(--space_xxxs);
 
     /*HEADER*/
     --header-space-vh: var(--space_xxs);
-    --logo-color: var(--bule-gray-500);
-    --logo-color_detail: var(--bule-gray-500);
+    --logo-color: var(--blue-gray-500);
+    --logo-color_detail: var(--blue-gray-500);
     --logo-text-size: var(--text_xl);
     --logo-height_common: var(--height_m);
     --logo-height_detail: var(--height_l);
+    --logo_letter-spacing: var(--letter-spacing_s);
 
     /*BUTTON*/
     --button-text_display: "inline-block";
     --button-space: var(--space_s);
-    --button-space_large: var(--space_l);
-    --button-space-icon: var(--space_xxl);
+    --button-space_large: var(--space_xl);
+    --button-space-icon: var(--space_xxxl);
     --button-text-size: var(--text_s);
     --button-height: var(--height_m);
     --button-height_large: var(--height_l);
     --button-background-color: var(--light-gray);
-    --button-background-color_disabled: var(--bule-gray-75);
-    --button-color_disabled: var(--bule-gray-450);
-    --button-background-color_hover: var(--bule-gray-100);
-    --button-stroke-color_active: var(--bule-gray-200);
+    --button-background-color_disabled: var(--blue-gray-75);
+    --button-color_disabled: var(--blue-gray-450);
+    --button-background-color_hover: var(--blue-gray-100);
+    --button-stroke-color_active: var(--blue-gray-200);
     --button-background-color_primary: var(--project-yellow);
     --button-background-color_primary_hover: var(--project-yellow_dark);
     --button-stroke-color_primary_active: var(--project-yellow_brown);
     --icon-settings: url("../../img/icons/settings.svg");
+    --icon-clear: url("../../img/icons/clear.svg");
     --icon-play: url("../../img/icons/play.svg");
     --button-icon: var(--icon-play);
 
@@ -86,16 +119,34 @@
     --action-card_image-size: 124px;
     --action-card_max-width: 264px;
     --action-card_image-background: url("../../img/icons/service.svg");
-    --action-card_image-space-bottom: var(--space_xxxl);
-    --action-card_description-space-bottom: var(--space_xl);
-    --action-card_text-size: var(--text_s);
-    --action-card_font-family: var(--font-family_main);
-    --action-card_color: var(--text-color-main);
+    --action-card_image-space-bottom: var(--space_xxxxl);
+    --action-card_description-space-bottom: var(--space_xxl);
+
+    /*FORM*/
+    --form-width: 474px;
+    --form-input_border-color: var(--blue-gray-90);
+    --form-inline-input_vertical-space: var(--space_xs);
+    --form-input_border-radius: 4px;
+    --form-input_border-color_active: var(--blue-gray-200);
+    --form-input_placeholder-color: var(--blue-gray-150);
+    --form-input_unit-color: var(--blue-gray-600);
+    --form-name_font-size: var(--text_m);
+    --form-name_color: var(--text-color_main);
+    --form-name_padding-bottom: var(--space_xxxs);
+    --form-name_letter-spacing: 0;
+    --form-name_line-height: var(--line-height_l);
+    --form_line-height: var(--line-height_m);
+    --form-description_color: var(--blue-gray-500);
+    --form-field_top: var(--space_xxs);
+    --form-field_bottom: var(--space_xxxs);
+    --form-body_vertical-space: var(--space_xs);
+
 }
 
 /*From bootstrap*/
 @media (max-width: 575.98px) {
     :root {
+        --main-cintent_top-space: var(--space_m);
         --workarea-width: calc(100% - 32px);
 
         /*HEADER*/
@@ -111,6 +162,12 @@
 
         /*BUTTON*/
         --button-text_display: none;
+
+        /*FORMS*/
+        --form-width: 100%;
+        --form-inline-input_vertical-space: var(--space_xxxs);
+        --form-body_vertical-space: var(--space_xxxxxs);
+        --input_inline-horizontal-space: var(--space_xxxs);
 
     }
 
