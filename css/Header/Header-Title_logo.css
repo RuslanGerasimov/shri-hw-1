@@ -1,0 +1,4 @@
+.Header-Title_logo {
+    color: var(--title_color_logo);
+    --logo-height_common: var(--height_m);
+}

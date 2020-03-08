@@ -1,11 +1,12 @@
 .Commit-Content {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    max-width: calc(100% - 120px);
 }
 
 @media (max-width: 575.98px) {
     .Commit-Content {
+        max-width: 100%;
         border-bottom: 1px solid var(--commit_content-border-bottom);
     }
 }

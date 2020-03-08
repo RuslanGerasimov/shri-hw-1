@@ -1,5 +1,6 @@
 .Commit-DateTime {
     margin-bottom: var(--commit_date-row-space-bottom);
+    color: var(--commit_info-color);
 }
 
 .Commit-DateTime:last-child {

@@ -1,7 +1,8 @@
-.Header-Logo {
+.Header-Title {
     font-family: var(--font-family_main);
     letter-spacing: var(--logo_letter-spacing);
-    color: var(--logo-color);
+    color: var(--title_color);
     font-size: var(--logo-text-size);
     line-height: var(--logo-height_common);
+    font-weight: 500;
 }

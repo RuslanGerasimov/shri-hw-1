@@ -1,6 +1,7 @@
 .Commit-DateTimeBox {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
 }
 
 @media (max-width: 575.98px) {

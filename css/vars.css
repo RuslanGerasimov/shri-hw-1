@@ -35,26 +35,29 @@
     --space_m: 14px;
     --space_l: 15px;
     --space_xl: 16px;
-    --space_xxl: 20px;
-    --space_xxxl: 24px;
-    --space_xxxxl: 25px;
-    --space_xxxxxl: 32px;
-    --space_xxxxxxl: 36px;
-    --space_xxxxxxxxl: 52px;
-    --space_xxxxxxxxxl: 56px;
+    --space_xxl: 18px;
+    --space_4xl: 20px;
+    --space_5xl: 24px;
+    --space_6xl: 25px;
+    --space_7xl: 32px;
+    --space_8xl: 36px;
+    --space_9xl: 52px;
+    --space_10xl: 56px;
 
     /*font sizes*/
     --text_s: 13px;
     --text_m: 15px;
-    --text_l: 18px;
-    --text_xl: 24px;
+    --text_l: 16px;
+    --text_xl: 18px;
+    --text_xxl: 24px;
 
     /*heights*/
     --height_xxs: 16px;
     --height_xs: 22px;
     --height_s: 24px;
     --height_m: 28px;
-    --height_l: 36px;
+    --height_l: 30px;
+    --height_xl: 36px;
 
     /*letter-spacing*/
     --letter-spacing_xxs: 0.06px;
@@ -68,7 +71,7 @@
     --line-height_l: 20px;
 
     /*LAYOUT*/
-    --main-cintent_top-space: var(--space_xs);
+    --main-cintent_top-space: var(--space_xxxs);
 
     /*FOOTER*/
     --footer-link-size: var(--text_s);
@@ -83,34 +86,35 @@
     --footer-link_letter-spacing: var(--letter-spacing_xxs);
 
     /*FIELD_INPUT*/
-    --input_height: var(--height_l);
+    --input_height: var(--height_xl);
     --input_horizontal-space: var(--space_s);
     --input_placeholder-color: var(--form-input_placeholder-color);
     --input-label_space-bottom: var(--space_xxxxs);
     --input-label_space-top: var(--space_xxs);
     --input-input_space-bottom: var(--space_xxxs);
     --input_compulsory-sign-color: var(--error-red);
-    --input_clear-icon-size: var(--height_l);
-    --input_inline-width: var(--space_xxxxxxxxl);
+    --input_clear-icon-size: var(--height_xl);
+    --input_inline-width: var(--space_9xl);
     --input_inline-horizontal-space: var(--space_xxxs);
 
     /*HEADER*/
     --header-space-vh: var(--space_xxs);
-    --logo-color: var(--blue-gray-500);
-    --logo-color_detail: var(--blue-gray-500);
-    --logo-text-size: var(--text_xl);
-    --logo-height_common: var(--height_m);
-    --logo-height_detail: var(--height_l);
+    --title_color_logo: var(--blue-gray-500);
+    --title_color: var(--font-family_main);
+    --logo-text-size: var(--text_xxl);
+    --logo-height_common: var(--height_l);
+    --logo-height_detail: var(--height_xl);
     --logo_letter-spacing: var(--letter-spacing_s);
+    --header_button-left-space: var(--space_xxxs);
 
     /*BUTTON*/
     --button-text_display: "inline-block";
     --button-space: var(--space_s);
-    --button-space_large: var(--space_xxl);
-    --button-space-icon: var(--space_xxxxl);
+    --button-space_large: var(--space_4xl);
+    --button-space-icon: var(--space_6xl);
     --button-text-size: var(--text_s);
     --button-height: var(--height_m);
-    --button-height_large: var(--height_l);
+    --button-height_large: var(--height_xl);
     --button-background-color: var(--light-gray);
     --button-background-color_disabled: var(--blue-gray-75);
     --button-color_disabled: var(--blue-gray-450);
@@ -120,6 +124,7 @@
     --button-background-color_primary_hover: var(--project-yellow_dark);
     --button-stroke-color_primary_active: var(--project-yellow_brown);
     --icon-settings: url("../../img/icons/settings.svg");
+    --icon-rebuild: url("../../img/icons/rebuild.svg");
     --icon-clear: url("../../img/icons/clear.svg");
     --icon-play: url("../../img/icons/play.svg");
     --icon-author: url("../../img/icons/man.svg");
@@ -135,8 +140,8 @@
     --action-card_image-size: 124px;
     --action-card_max-width: 264px;
     --action-card_image-background: url("../../img/icons/service.svg");
-    --action-card_image-space-bottom: var(--space_xxxxxl);
-    --action-card_description-space-bottom: var(--space_xxxl);
+    --action-card_image-space-bottom: var(--space_7xl);
+    --action-card_description-space-bottom: var(--space_5xl);
 
     /*FORM*/
     --form-width: 474px;
@@ -167,31 +172,32 @@
 
     /*COMMIT*/
     --commit_vertical-space: var(--space_xs);
-    --commit_left-space: var(--space_xxxxxxxxxl);
-    --commit_right-space: var(--space_xxxl);
+    --commit_left-space: var(--space_10xl);
+    --commit_right-space: var(--space_5xl);
     --commit_shadow-color: var(--gray-opacity);
     --commit_border-radius: var(--space_xxxxs);
     --commit_title-font-size: var(--text_m);
     --commit_title-left-space: var(--space_xxxxxs);
-    --commit_commit-id-color: var(--blue-gray-550);
-    --commit_commit-id-line-height: var(--line-height_m);
+    --commit_info-color: var(--blue-gray-550);
+    --commit_commit-id-line-height: var(--line-height_s);
     --commit_commit-id-left-space: var(--space_xxxxxs);
     --commit_author-left-space: var(--space_xxxs);
     --commit_title-line-height: var(--line-height_l);
     --commit_content-row-space-bottom: var(--space_xxxs);
     --commit_date-row-space-bottom: var(--space_xs);
     --commit_content-border-bottom: var(--blue-gray-50);
+    --commit_bottom-space: var(--space_xxxs);
 }
 
 /*From bootstrap*/
 @media (max-width: 575.98px) {
     :root {
-        --main-cintent_top-space: var(--space_m);
+        --main-cintent_top-space: var(--space_xxxs);
         --workarea-width: calc(100% - 32px);
 
         /*HEADER*/
         --header-space-vh: var(--space_xs);
-        --logo-text-size: var(--text_l);
+        --logo-text-size: var(--text_xl);
         --logo-height_common: var(--height_xs);
         --logo-height_detail: var(--height_xs);
 
@@ -220,7 +226,7 @@
         --commit_vertical-space: var(--space_xl);
         --commit_right-space: var(--space_xs);
         --commit_datetime-horizontal-space: var(--space_xxxs);
-        --commit_left-space: var(--space_xxxxxxl);
+        --commit_left-space: var(--space_8xl);
         --commit_items-top-space: var(--space_xxxs);
         --commit_date-row-space-bottom: 0;
     }

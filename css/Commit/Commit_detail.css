@@ -1,0 +1,7 @@
+.Commit_detail {
+    --commit_bottom-space: var(--space_xs);
+}
+
+.Commit_detail:hover {
+    box-shadow: initial;
+}
