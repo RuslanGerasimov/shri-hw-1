@@ -1,9 +1,0 @@
-.InputField-ClearIcon {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: var(--input_clear-icon-size);
-    height: var(--input_clear-icon-size);
-    background: var(--icon-clear) no-repeat center;
-}
