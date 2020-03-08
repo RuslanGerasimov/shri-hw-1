@@ -71,7 +71,8 @@
     --line-height_l: 20px;
 
     /*LAYOUT*/
-    --main-cintent_top-space: var(--space_xxxs);
+    --main-content_top-space: var(--space_xxxs);
+    --main-content_bottom-space: var(--space_4xl);
 
     /*FOOTER*/
     --footer-link-size: var(--text_s);
@@ -187,12 +188,29 @@
     --commit_date-row-space-bottom: var(--space_xs);
     --commit_content-border-bottom: var(--blue-gray-50);
     --commit_bottom-space: var(--space_xxxs);
+    --commit_box-shadow: 0 1px 1px var(--commit_shadow-color), 0 0 1px var(--commit_shadow-color);
+    --commit_content-bottom-border: 1px solid var(--commit_content-border-bottom);
+    --commit_detail_content-bottom-space: var(--space_xxxs);
+    --commit_detail_datetime-horizontal-space: var(--space_xxxs);
+
+    /*LOG*/
+    --log_background-color: var(--blue-gray-75);
+    --log_border-radius: var(--space_xxxxs);
+    --log_padding-vertical: var(--space_xxxs);
+    --log_padding-horizontal: var(--space_xs);
+}
+
+@media (max-width: 856px) {
+    :root {
+        --workarea-width: 90%;
+    }
 }
 
 /*From bootstrap*/
 @media (max-width: 575.98px) {
     :root {
-        --main-cintent_top-space: var(--space_xxxs);
+        --main-content_top-space: var(--space_xxxs);
+        --main-content_bottom-space: var(--space_xl);
         --workarea-width: calc(100% - 32px);
 
         /*HEADER*/

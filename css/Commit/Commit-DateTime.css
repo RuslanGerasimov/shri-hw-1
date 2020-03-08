@@ -6,12 +6,13 @@
 .Commit-DateTime:last-child {
     margin-bottom: 0;
 }
-@media (max-width: 575.98px) {
-    .Commit-DateTime {
-        margin-left: var(--commit_datetime-horizontal-space);
-    }
 
-    .Commit-DateTime:first-child {
-        margin-left: 0;
+.Commit_detail .Commit-DateTime:not(:first-child) {
+    margin-left: var(--commit_detail_datetime-horizontal-space);
+}
+
+@media (max-width: 575.98px) {
+    .Commit-DateTime:not(:first-child) {
+        margin-left: var(--commit_datetime-horizontal-space);
     }
 }

@@ -1,7 +1,3 @@
-.Header-Button {
+.Header-Button:not(:first-child) {
     margin-left: var(--header_button-left-space);
-}
-
-.Header-Button:first-child {
-    margin-left: 0;
 }

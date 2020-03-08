@@ -4,5 +4,6 @@
     flex-grow: 1;
     width: 100%;
     max-width: var(--workarea-width);
-    padding-top: var(--main-cintent_top-space);
+    padding-top: var(--main-content_top-space);
+    padding-bottom: var(--main-content_bottom-space);
 }

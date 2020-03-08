@@ -1,9 +1,5 @@
-.Form-Button {
+.Form-Button:not(:first-child) {
     margin-left: var(--space_xxxs);
-}
-
-.Form-Button:first-child {
-    margin-left: 0;
 }
 
 @media (max-width: 575.98px) {

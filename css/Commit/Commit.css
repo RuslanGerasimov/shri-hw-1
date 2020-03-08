@@ -4,7 +4,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: var(--commit_vertical-space) var(--commit_right-space) var(--commit_vertical-space) var(--commit_left-space);
-    box-shadow: 0 1px 1px var(--commit_shadow-color), 0 0 1px var(--commit_shadow-color);
+    box-shadow: var(--commit_box-shadow);
     border-radius: var(--commit_border-radius);
     margin-bottom: var(--commit_bottom-space);
     cursor: pointer;

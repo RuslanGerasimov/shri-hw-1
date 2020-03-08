@@ -4,6 +4,11 @@
     white-space: nowrap;
 }
 
+.Commit_detail > .Commit-DateTimeBox {
+    flex-direction: row;
+    padding-top: var(--commit_detail_content-bottom-space);
+}
+
 @media (max-width: 575.98px) {
     .Commit-DateTimeBox {
         flex-direction: row;
