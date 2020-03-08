@@ -62,13 +62,13 @@
 @import "Form/Form-Button.css";
 
 @import "InputField/InputField.css";
-@import "InputField/InputField-ClearIcon.css";
-@import "InputField/InputField-ClearIcon_visible.css";
 @import "InputField/InputField-InputBox.css";
+@import "InputField/InputField-InputBox_clearIcon.css";
 @import "InputField/InputField-Input.css";
 @import "InputField/InputField-Label.css";
 @import "InputField/InputField_compulsory.css";
 @import "InputField/InputField_inline.css";
+@import "InputField/InputField-ClearIcon.css";
 
 @import "Log/Log.css";
 

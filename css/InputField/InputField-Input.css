@@ -19,3 +19,7 @@
     border-color: var(--form-input_border-color_active);
     outline: none;
 }
+
+.InputField-InputBox_clearIcon > .InputField-Input {
+    padding-right: var(--input_clear-icon-size);
+}

@@ -2,28 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d67f0b6b-6f22-405d-99e2-0c69b6e33063" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blocks/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/InputField/InputField-ClearIcon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/InputField/InputField-InputBox_clearIcon.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/button.html" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/button.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/card.html" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commit_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Commit/Commit-Content.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Commit/Commit-Content.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Commit/Commit-DateTime.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Commit/Commit-DateTime.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Commit/Commit-DateTimeBox.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Commit/Commit-DateTimeBox.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Commit/Commit-Item_title.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Commit/Commit-Item_title.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Commit/Commit.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Commit/Commit.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Commit/Commit_detail.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Commit/Commit_detail.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Footer/Footer-Item.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Footer/Footer-Item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Form/Form-Button.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Form/Form-Button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Header/Header-Button.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Header/Header-Button.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/Layout/Layout-Content.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/Layout/Layout-Content.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blocks/input.html" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/input.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/InputField/InputField-Input.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/InputField/InputField-Input.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/InputField/InputField-Label.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/InputField/InputField-Label.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/vars.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/vars.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.html" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/input.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/settings.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +87,7 @@
       <workItem from="1583495271535" duration="25324000" />
       <workItem from="1583527447935" duration="2000" />
       <workItem from="1583567198944" duration="35673000" />
-      <workItem from="1583652276637" duration="18884000" />
+      <workItem from="1583652276637" duration="28814000" />
     </task>
     <servers />
   </component>
@@ -124,10 +111,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583652280356" />
-    <state x="656" y="256" width="737" height="596" key="find.popup" timestamp="1583673160150">
+    <state x="522" y="122" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583674991872">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="256" width="737" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583673160150" />
+    <state x="522" y="122" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583674991872" />
+    <state x="656" y="256" width="737" height="596" key="find.popup" timestamp="1583684594000">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="256" width="737" height="596" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583684594000" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1583501347244">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
