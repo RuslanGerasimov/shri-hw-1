@@ -1,6 +1,8 @@
 .Layout-Content_centered {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 .Layout-Content_centered:before {
     content: "";

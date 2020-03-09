@@ -5,12 +5,3 @@
     padding: var(--log_padding-vertical) var(--log_padding-horizontal);
     overflow: auto;
 }
-
-@media (max-width: 575.98px) {
-    .Log {
-        position: relative;
-        border-radius: 0;
-        left: -16px;
-        width: calc(var(--workarea-width) + 40px);
-    }
-}

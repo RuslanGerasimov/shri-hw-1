@@ -1,10 +1,8 @@
 .Form-Footer {
-    display: flex;
 }
 
 @media (max-width: 575.98px) {
     .Form-Footer {
-        flex-direction: column;
         padding: var(--space_xxxs) 0;
     }
 }

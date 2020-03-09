@@ -1,7 +1,6 @@
 .Button {
     position: relative;
-    display: flex;
-    align-items: center;
+    display: inline-block;
     padding: 0;
     min-width: var(--button-height);
     height: var(--button-height);

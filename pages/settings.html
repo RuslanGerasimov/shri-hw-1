@@ -13,59 +13,61 @@
             </div>
             <div class="Header-Buttons"></div>
         </div>
-        <div class="Layout-Content">
-            <div class="Form">
-                <div class="Form-Header">
-                    <div class="Form-HeaderItem Form-HeaderItem_title">Settings</div>
-                    <div class="Form-HeaderItem">Configure repository connection and synchronization settings.</div>
-                </div>
-                <div class="Form-Body">
-                    <div class="Form-Field">
-                        <div class="InputField InputField_compulsory">
-                            <label for="githubRep" class="InputField-Label">GitHub repository</label>
-                            <div class="InputField-InputBox">
-                                <input id="githubRep" type="text" class="InputField-Input " placeholder="user-name/repo-name">
-                                <div class="InputField-ClearIcon"></div>
+        <div class="Layout-Wrapper">
+            <div class="Layout-Content Layout-Content_top_l">
+                <div class="Form">
+                    <div class="Form-Header">
+                        <div class="Form-HeaderItem Form-HeaderItem_title">Settings</div>
+                        <div class="Form-HeaderItem">Configure repository connection and synchronization settings.</div>
+                    </div>
+                    <div class="Form-Body">
+                        <div class="Form-Field">
+                            <div class="InputField InputField_compulsory">
+                                <label for="githubRep" class="InputField-Label">GitHub repository</label>
+                                <div class="InputField-InputBox">
+                                    <input id="githubRep" type="text" class="InputField-Input " placeholder="user-name/repo-name">
+                                    <div class="InputField-ClearIcon"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Form-Field">
+                            <div class="InputField">
+                                <label for="command" class="InputField-Label">Build command</label>
+                                <div class="InputField-InputBox InputField-InputBox_clearIcon">
+                                    <input id="command" type="text" class="InputField-Input" value="npm ci && npm run build">
+                                    <div class="InputField-ClearIcon"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Form-Field">
+                            <div class="InputField">
+                                <label for="mainBranch" class="InputField-Label">Main branch</label>
+                                <div class="InputField-InputBox InputField-InputBox_clearIcon">
+                                    <input id="mainBranch" type="text"
+                                           class="InputField-Input"
+                                           value="master " autofocus>
+                                    <div class="InputField-ClearIcon"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Form-Field Form-Field_verticalSpace_xs">
+                            <div class="InputField InputField_inline">
+                                <label for="synchInterval" class="InputField-Label">Synchronize every</label>
+                                <div class="InputField-InputBox">
+                                    <input id="synchInterval" type="text" class="InputField-Input" value="10">
+                                </div>
+                                <div class="InputField-Unit">minutes</div>
                             </div>
                         </div>
                     </div>
-                    <div class="Form-Field">
-                        <div class="InputField">
-                            <label for="command" class="InputField-Label">Build command</label>
-                            <div class="InputField-InputBox InputField-InputBox_clearIcon">
-                                <input id="command" type="text" class="InputField-Input" value="npm ci && npm run build">
-                                <div class="InputField-ClearIcon"></div>
-                            </div>
-                        </div>
+                    <div class="Form-Footer">
+                        <button class="Form-Button Button Button_responsive Button_large Button_primary">
+                            <span class="Button-Text">Save</span>
+                        </button>
+                        <button class="Form-Button Button Button_responsive Button_large">
+                            <span class="Button-Text">Cancel</span>
+                        </button>
                     </div>
-                    <div class="Form-Field">
-                        <div class="InputField">
-                            <label for="mainBranch" class="InputField-Label">Main branch</label>
-                            <div class="InputField-InputBox InputField-InputBox_clearIcon">
-                                <input id="mainBranch" type="text"
-                                       class="InputField-Input"
-                                       value="master " autofocus>
-                                <div class="InputField-ClearIcon"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="Form-Field Form-Field_verticalSpace_xs">
-                        <div class="InputField InputField_inline">
-                            <label for="synchInterval" class="InputField-Label">Synchronize every</label>
-                            <div class="InputField-InputBox">
-                                <input id="synchInterval" type="text" class="InputField-Input" value="10">
-                            </div>
-                            <div class="InputField-Unit">minutes</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="Form-Footer">
-                    <button class="Form-Button Button Button_large Button_primary">
-                        <span class="Button-Text">Save</span>
-                    </button>
-                    <button class="Form-Button Button Button_large">
-                        <span class="Button-Text">Cancel</span>
-                    </button>
                 </div>
             </div>
         </div>

@@ -1,9 +1,27 @@
 .Layout-Content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    width: 100%;
-    max-width: var(--workarea-width);
+    width: var(--workarea-width);
     padding-top: var(--main-content_top-space);
     padding-bottom: var(--main-content_bottom-space);
+}
+
+.Layout-Content_noSpace_bottom {
+    padding-bottom: 0;
+}
+
+.Layout-Content_noSpace_top {
+    padding-top: 0;
+}
+
+
+@media (max-width: 575.98px) {
+    .Layout-Content_top_s {
+        padding-top: var(--space_xxxxxs);
+    }
+    .Layout-Content_top_m {
+        padding-top: var(--space_xxxs);
+    }
+
+    .Layout-Content_top_l {
+        padding-top: var(--space_l);
+    }
 }

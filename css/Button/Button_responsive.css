@@ -1,0 +1,6 @@
+@media (max-width: 575.98px) {
+    .Button_responsive {
+        width: 100%;
+        height: var(--button-height_large);
+    }
+}
