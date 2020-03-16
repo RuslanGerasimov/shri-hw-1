@@ -1,21 +1,57 @@
 const path = require('path');
 const {spawn} = require('child_process');
 const {StringDecoder} = require('string_decoder');
+const fs = require('fs');
+const rimraf = require('rimraf');
 
 const repositoriesDir = path.resolve(__dirname, '..', 'repositories');
 const getRepositoryFolder = repositoryName => path.resolve(repositoriesDir, repositoryName);
 
 const cloneRepository = (repositoryName) => {
     return new Promise((resolve, reject) => {
-        const child = spawn('git', ['clone', `https://github.com/${repositoryName}`, getRepositoryFolder(repositoryName)], {
-            "cwd": repositoriesDir
+        const repositoryFolder = getRepositoryFolder(repositoryName);
+        const deleteDir = new Promise((resolve, reject) => {
+            rimraf(repositoryFolder, function () {
+                console.log(...arguments);
+                resolve(true)
+            });
         });
-        child.on('exit', (code, text) => {
-            if (!code) {
-                return resolve(true)
-            }
-            reject({code, text});
-        })
+        const checkIfDirExists = new Promise((resolve, reject) => {
+            fs.access(repositoriesDir, function (err) {
+                if (err && err.code === 'ENOENT') {
+                    fs.mkdir(repositoriesDir, function (err) {
+                        if (err) {
+                            reject(err)
+                        } else {
+                            resolve(true)
+                        }
+                    });
+                } else {
+                    resolve(true);
+                }
+            });
+        });
+        Promise.all([deleteDir, checkIfDirExists])
+            .then(() => {
+                const child = spawn('git', ['clone', `https://github.com/${repositoryName}`, getRepositoryFolder(repositoryName)], {
+                    "cwd": repositoriesDir
+                });
+                let error = "";
+                const decoder = new StringDecoder('utf8');
+                child.stderr.on('data', function (buffer) {
+                    error += decoder.write(buffer);
+                });
+                child.on('exit', (code) => {
+                    if (!error || !code) {
+                        return resolve(true);
+                    } else {
+                        reject(error);
+                    }
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     })
 };
 
@@ -36,11 +72,16 @@ const getCommitParam = (repoName, commitHash, type) => {
             const data = decoder.write(bufferData);
             output += data;
         });
+
+        childProcess.on('error', function (err) {
+            reject(...arguments);
+        });
+
         childProcess.on('exit', function (code, message) {
             if (!code) {
                 return resolve({
                     type: type,
-                    value: output
+                    value: output.trim()
                 });
             }
             reject({code, message});
@@ -49,10 +90,23 @@ const getCommitParam = (repoName, commitHash, type) => {
 };
 
 const getCommitBranch = (repoName, commitHash) => {
-  return new Promise((resolve, reject) => {
-      const use = "git branch --contains <commit>";
-      resolve("TEST");//TODO: Проработать метод
-  })
+    return new Promise((resolve, reject) => {
+        const childProcess = spawn('git', ['branch', '--contains', commitHash, '-r'], {
+            "cwd": getRepositoryFolder(repoName)
+        });
+        childProcess.stdout.on('data', (buffer) => {
+            const decoder = new StringDecoder('utf8');
+            let data = decoder.write(buffer);
+            data = data.trim().split("\n");
+            let firstBranch = data.shift();
+            resolve({type: "branch", value: firstBranch.split(' ').pop().trim()});
+        });
+        childProcess.stderr.on('data', (buffer) => {
+            const decoder = new StringDecoder('utf8');
+            let data = decoder.write(buffer);
+            reject(data);
+        });
+    })
 };
 
 
@@ -61,14 +115,14 @@ const getIndividualLog = (commitHash, repoName) => {
         Promise.all([
             getCommitParam(repoName, commitHash, 'body'),
             getCommitParam(repoName, commitHash, 'author'),
-            getCommitBranch(repoName, commitHash),
+            getCommitBranch(repoName, commitHash)
         ]).then((promiseResults) => {
             const commitMessage = promiseResults.filter(result => result.type === 'body')[0].value;
             const author = promiseResults.filter(result => result.type === 'author')[0].value;
             const branch = promiseResults.filter(result => result.type === 'branch')[0].value;
-            resolve({ author, commitMessage, repoName, commit: commitHash, branchName: branch });
+            resolve({author, commitMessage, repoName, commit: commitHash, branchName: branch});
         }).catch((err) => {
-            reject(err);
+            reject({status: 404, statusText: "can't fetch commit"});
         })
 
     });
@@ -76,7 +130,8 @@ const getIndividualLog = (commitHash, repoName) => {
 
 const gitLog = (repositoryName, branchName) => {
     return new Promise((resolve, reject) => {
-        const childProcess = spawn('git', ['log', branchName, '--pretty=%H%n%s%n%aN%n%cI%n%b', '--reverse'], {
+        const origin = branchName.indexOf('origin') === 0 ? branchName : 'origin/' + branchName;
+        const childProcess = spawn('git', ['log', origin, '--pretty=%H%n%s%n%aN%n%cI%n%b', '--reverse'], {
             "cwd": getRepositoryFolder(repositoryName)
         });
         const decoder = new StringDecoder('utf8');
@@ -97,10 +152,10 @@ const gitLog = (repositoryName, branchName) => {
                         res[res.length - 1]['subject'] = line;
                         break;
                     case 2:
-                        res[res.length - 1]['date'] = line;
+                        res[res.length - 1]['author'] = line;
                         break;
                     case 3:
-                        res[res.length - 1]['author'] = line;
+                        res[res.length - 1]['date'] = line;
                         break;
                     case 4:
                         res[res.length - 1]['body'] = line;
@@ -109,6 +164,9 @@ const gitLog = (repositoryName, branchName) => {
                 counter++;
                 if (!line && counter > 4) {
                     counter = 0;
+                } else if (counter > 4) {
+                    res[res.length - 1]['body'] += "\n" + line;
+                    res[res.length - 1]['body'] = res[res.length - 1]['body'].trim();
                 }
                 return res;
             }, []);
@@ -146,4 +204,4 @@ const gitPull = (repositoryName) => {
     });
 };
 
-module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog};
+module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch};

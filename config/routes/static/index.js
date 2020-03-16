@@ -14,8 +14,7 @@ router.get('/builds', function (req, res) {
     res.sendFile(path.resolve(staticPagesDir, 'list.html'));
 });
 
-router.get('/build/:id', function (req, res) {
-    console.log(req.params);
+router.get('/builds/:id', function (req, res) {
     res.sendFile(path.resolve(staticPagesDir, 'detail.html'));
 });
 

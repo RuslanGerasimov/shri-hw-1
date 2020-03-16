@@ -14,18 +14,18 @@ router.get('/settings', function (req, res) {
 router.post('/settings', (req, res) => {
     const {repoName, buildCommand, mainBranch, period} = req.body;
     saveSettings(repoName, buildCommand, mainBranch, period)
+        .then(() => cloneRepository(req.body.repoName))
         .then(() => {
             res.status(200).json("ok");
-            cloneRepository(req.body.repoName)
+            return addNewCommitsToBuildQue()
         })
-        .then(() => { return addNewCommitsToBuildQue() })
         .then((data) => {
             if(data.period) {
                 setTimeout(checkRepository, data.period * 60 * 1000);
             }
         })
         .catch((err) => {
-            console.log(err);
+            res.status(404).json({status: 404,statusText: err});
         })
 });
 

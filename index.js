@@ -2,9 +2,7 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const { checkRepository }  = require('./backend/main/build/buildFuncs');
-
-const timer = { timerId: null };
+const { checkRepository }  = require('./backend/api/builds');
 
 const staticRoute = require('./config/routes/static/index');
 const apiSettingsRoute = require('./config/routes/api/settings');

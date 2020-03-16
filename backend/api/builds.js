@@ -2,10 +2,12 @@ const axiosApiInstance = require('../../config/axios');
 const {gitLog, gitPull} = require("../main/git");
 const {getSettings} = require('./settings');
 
-const fetchBuilds = () => {
+const fetchBuilds = (limit = null, offset = null) => {
     return new Promise((resolve, reject) => {
-        axiosApiInstance.get('/build/list').then((result) => {
-            resolve(result);
+        const query = limit || offset ? `?limit=${+limit}&offset=${+offset}` : "";
+
+        axiosApiInstance.get('/build/list' + query).then((result) => {
+            resolve(result.data.data);
         }).catch((err) => {
             reject(err.response);
         });
@@ -42,13 +44,13 @@ const addBuild = (commit, author, branchName, message) => {
 const recursiveAddBuilder = (commit, author, branchName, message, resolve, reject) => {
     addBuild(commit, author, branchName, message).then((data) => {
         resolve(data);
-    }).catch((err) => {
-        if (err.response.status === 500) {
+    }).catch((errResponse) => {
+        if (errResponse.status === 500) {
             setTimeout(() => {
                 recursiveAddBuilder(commit, author, branchName, message, resolve, reject)
             }, 200)
         } else {
-            reject(err);
+            reject(errResponse);
         }
     })
 };
@@ -62,7 +64,8 @@ const addNewCommitsToBuildQue = (branch = null, repoName = null) => {
         };
 
         if (!branch || !repoName) {
-            const configData = await getSettings().then((data) => data).catch(err => err);
+            const configData = await getSettings()
+                .catch(err => err);
 
             config.branch = configData.mainBranch;
             config.repoName = configData.repoName;
@@ -70,8 +73,7 @@ const addNewCommitsToBuildQue = (branch = null, repoName = null) => {
         }
 
         fetchBuilds()
-            .then((result) => {
-                const builds = result.data.data;
+            .then((builds) => {
                 const currentBranch = config.branch;
                 const repoName = config.repoName;
                 gitLog(repoName, currentBranch).then((commits) => {
@@ -83,6 +85,8 @@ const addNewCommitsToBuildQue = (branch = null, repoName = null) => {
                         if (!hasBeenAdded) {
                             await (new Promise((resolve, reject) => {
                                 recursiveAddBuilder(commit.commit, commit.author, currentBranch, message, resolve, reject)
+                                    .then(() => { console.log("ok") })
+                                    .catch((err) => { console.log(err) });
                             })).then(data => data).catch(err => err);
                         }
                     });
@@ -132,8 +136,8 @@ const checkRepository = () => {
 };
 const getBuildLog = (buildId) => {
     return new Promise((resolve, reject) => {
-        axiosApiInstance.get('/build/log', {buildId: buildId}).then((result) => {
-            resolve(result.data.data);
+        axiosApiInstance.get(`/build/log?buildId=${buildId}`).then((result) => {
+            resolve(result.data);
         }).catch((err) => {
             reject(err.response);
         })
@@ -159,6 +163,7 @@ const cancelBuilding = (buildId) => {
         })
     })
 };
+
 const finishBuilding = (buildId, duration, isSuccess, buildLog) => {
     return new Promise((resolve, reject) => {
         const data = {

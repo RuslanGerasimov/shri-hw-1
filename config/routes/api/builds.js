@@ -5,8 +5,8 @@ const { getSettings } = require('../../../backend/api/settings');
 const { getIndividualLog } = require('../../../backend/main/git');
 
 router.get('/builds', function (req, res) {
-    fetchBuilds().then((result) => {
-        res.status(result.status).json(result.data);
+    fetchBuilds(req.query.limit, req.query.offset).then((result) => {
+        res.status(200).json(result);
     }).catch((err) => {
         res.status(err.status).json(err.statusText);
     });
@@ -24,16 +24,16 @@ router.get('/builds/:buildId', function (req, res) {
 router.get('/builds/:buildId/logs', function (req, res) {
     const buildId = req.params.buildId;
     getBuildLog(buildId).then((result) => {
-        res.status(result.status).json(result.data.data);
+        res.status(200).json(result);
     }).catch((err) => {
-        res.status(err.status).json(err.statusText);
+        res.status(err.status).json("No logs for this build");
     })
 });
 
 router.post('/builds/:commitHash', (req, res) => {
     getSettings().then((data) => {
         const { repoName } = data;
-        return getIndividualLog(repoName, req.body.commitHash);
+        return getIndividualLog(req.params.commitHash, repoName);
     }).then(({author, commitMessage, repoName, commit, branchName}) => {
         return addBuild(commit, author, branchName, commitMessage)
     }).then((result) => {
@@ -42,7 +42,5 @@ router.post('/builds/:commitHash', (req, res) => {
         res.status(err.status).json(err.statusText);
     });
 });
-
-//TODO: добавить заглушки для создания билда
 
 module.exports = router;
