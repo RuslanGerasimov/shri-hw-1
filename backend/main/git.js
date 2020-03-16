@@ -200,6 +200,9 @@ const gitPull = (repositoryName) => {
             } else {
                 reject(code);
             }
+        });
+        childProcess.on('error', (error) => {
+            reject(error);
         })
     });
 };
