@@ -1,4 +1,4 @@
 .idea
 node_modules
-.env
-backend/repositories/*
+/server/.env
+/server/backend/repositories/*
