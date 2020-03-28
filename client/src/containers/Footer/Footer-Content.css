@@ -1,0 +1,15 @@
+.Footer-Content {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    min-height: var(--footer-height);
+    max-width: var(--workarea-width);
+}
+
+@media (max-width: 575.98px) {
+    .Footer-Content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--space_xs) 0;
+    }
+}

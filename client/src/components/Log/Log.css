@@ -1,0 +1,7 @@
+.Log {
+    white-space: pre;
+    background-color: var(--log_background-color);
+    border-radius: var(--log_border-radius);
+    padding: var(--log_padding-vertical) var(--log_padding-horizontal);
+    overflow: auto;
+}

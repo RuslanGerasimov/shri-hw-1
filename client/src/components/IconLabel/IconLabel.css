@@ -1,0 +1,17 @@
+.IconLabel {
+    position: relative;
+    line-height: var(--icon_label-line-height);
+    padding-left: calc(var(--icon_size) + var(--icon_label-space));
+    font-size: var(--icon_label-font-size);
+    color: var(--icon_label-font-color);
+}
+
+.IconLabel::before {
+    content: "";
+    left: 0;
+    display: block;
+    position: absolute;
+    width: var(--icon_size);
+    height: var(--icon_size);
+    background: var(--icon_image-path) no-repeat center;
+}

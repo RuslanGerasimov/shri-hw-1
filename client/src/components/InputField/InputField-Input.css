@@ -1,0 +1,25 @@
+.InputField-Input {
+    width: 100%;
+    border: 2px solid var(--form-input_border-color);
+    border-radius: var(--form-input_border-radius);
+    height: var(--input_height);
+    padding: 0 var(--input_horizontal-space);
+    box-sizing: border-box;
+    font-family: var(--font-family_main);
+    font-size: var(--font-size_default);
+    letter-spacing: 0;
+    color: var(--text-color_main);
+}
+
+.InputField-Input::placeholder {
+    color: var(--input_placeholder-color);
+}
+
+.InputField-Input:active, .InputField-Input:focus {
+    border-color: var(--form-input_border-color_active);
+    outline: none;
+}
+
+.InputField-InputBox_clearIcon > .InputField-Input {
+    padding-right: var(--input_clear-icon-size);
+}

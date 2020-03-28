@@ -1,0 +1,9 @@
+.Commit_detail {
+    --commit_bottom-space: var(--space_xs);
+    cursor: initial;
+    flex-direction: column;
+}
+
+.Commit_detail:hover {
+    box-shadow: var(--commit_box-shadow);
+}

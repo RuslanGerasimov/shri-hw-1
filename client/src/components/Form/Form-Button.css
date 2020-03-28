@@ -1,0 +1,16 @@
+.Form-Button:not(:first-child) {
+    margin-left: var(--space_xxxs);
+}
+
+@media (max-width: 575.98px) {
+    .Form-Button:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .Form-Button {
+        margin-bottom: var(--space_xs);
+    }
+    .Form-Button:last-child {
+        margin-bottom: 0;
+    }
+}

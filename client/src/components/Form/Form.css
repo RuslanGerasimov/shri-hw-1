@@ -1,0 +1,4 @@
+.Form {
+    line-height: var(--form_line-height);
+    width: var(--form-width);
+}

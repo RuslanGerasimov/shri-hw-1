@@ -1,0 +1,7 @@
+.Theme_default {
+    --font-size_default: var(--text_s);
+    font-family: var(--font-family_main);
+    letter-spacing: var(--letter-spacing_s);
+    font-size: var(--font-size_default);
+    color: var(--text-color_main);
+}

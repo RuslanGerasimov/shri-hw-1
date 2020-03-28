@@ -1,0 +1,18 @@
+.Commit-Content {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 120px);
+}
+
+@media (max-width: 575.98px) {
+    .Commit-Content {
+        max-width: 100%;
+        border-bottom: var(--commit_content-bottom-border);
+    }
+}
+
+.Commit_detail > .Commit-Content {
+    border-bottom: var(--commit_content-bottom-border);
+    padding-bottom: var(--commit_detail_content-bottom-space);
+    max-width: 100%;
+}

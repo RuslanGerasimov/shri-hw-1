@@ -1,0 +1,11 @@
+.Button_primary {
+    background-color: var(--button-background-color_primary);
+}
+
+.Button_primary:hover {
+    --button-background-color_hover: var(--button-background-color_primary_hover);
+}
+
+.Button_primary:active, .Button_primary:focus {
+    --button-stroke-color_active: var(--button-stroke-color_primary_active);
+}

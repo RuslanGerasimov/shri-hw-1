@@ -1,0 +1,30 @@
+.IconLabel_type_author {
+    --icon_image-path: var(--icon-author);
+}
+
+.IconLabel_type_branch {
+    --icon_image-path: var(--icon-branch);
+}
+
+.IconLabel_type_date {
+    --icon_image-path: var(--icon-date);
+}
+
+.IconLabel_type_timeInterval {
+    --icon_image-path: var(--icon-timeInterval);
+}
+
+.IconLabel_type_success {
+    --icon_label-font-color: var(--success-green);
+    --icon_image-path: var(--icon-success);
+}
+
+.IconLabel_type_error {
+    --icon_image-path: var(--icon-error);
+    --icon_label-font-color: var(--error-red);
+}
+
+.IconLabel_type_waiting {
+    --icon_image-path: var(--icon-waiting);
+    --icon_label-font-color: var(--waiting-orange);
+}

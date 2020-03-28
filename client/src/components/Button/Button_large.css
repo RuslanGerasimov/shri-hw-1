@@ -1,0 +1,4 @@
+.Button_large {
+    min-width: var(--button-height_large);
+    --button-height: var(--button-height_large);
+}

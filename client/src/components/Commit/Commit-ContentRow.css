@@ -1,0 +1,15 @@
+.Commit-ContentRow {
+    display: flex;
+    margin-bottom: var(--commit_content-row-space-bottom);
+}
+
+.Commit-ContentRow:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 575.98px) {
+    .Commit-ContentRow {
+        margin-bottom: 0;
+        flex-direction: column;
+    }
+}

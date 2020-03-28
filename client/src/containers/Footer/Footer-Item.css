@@ -1,0 +1,19 @@
+.Footer-Item {
+    color: var(--links-color);
+    cursor: pointer;
+    font-family: var(--font-family_main);
+    font-size: var(--footer-link-size);
+    line-height: var(--footer-link-line-height);
+    letter-spacing: var(--footer-link_letter-spacing);
+}
+
+.Footer-Item:not(:first-child) {
+    margin-left: var(--space_xs);
+}
+
+.Footer-Item:hover {
+    color: var(--links-hover);
+}
+.Footer-Item:active {
+    color: var(--links-active);
+}

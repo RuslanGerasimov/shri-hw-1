@@ -1,0 +1,281 @@
+:root {
+    --light-gray: #E6E6E6;
+    --blue-gray-50: #F0F2F3;
+    --blue-gray-75: #F2F2F2;
+    --blue-gray-90: #D9D9D9;
+    --blue-gray-100: #DBDBDB;
+    --blue-gray-150: #CFCFCF;
+    --blue-gray-200: #B3B3B3;
+    --blue-gray-450: #7F7F7F;
+    --blue-gray-500: #7F8285;
+    --blue-gray-550: #595959;
+    --blue-gray-600: #434445;
+    --project-yellow: #FFCC00;
+    --project-yellow_dark: #F2C200;
+    --project-yellow_brown: #B38F00;
+    --red: #E00000;
+    --error-red: #FF3333;
+    --success-green: #00B341;
+    --waiting-orange: #FF9A00;
+    --black: #000000;
+    --gray-opacity: rgba(67, 68, 69, 0.3);
+
+    /*fonts*/
+    --font-family_main: "YS Text";
+    --text-color_main: var(--black);
+    --text-color_secondary: var(--blue-gray-500);
+
+    /*spaces*/
+    --space_xxxxxs: 4px;
+    --space_xxxxs: 6px;
+    --space_xxxs: 8px;
+    --space_xxs: 10px;
+    --space_xs: 12px;
+    --space_s: 13px;
+    --space_m: 14px;
+    --space_l: 15px;
+    --space_xl: 16px;
+    --space_xxl: 18px;
+    --space_4xl: 20px;
+    --space_5xl: 24px;
+    --space_6xl: 25px;
+    --space_7xl: 32px;
+    --space_8xl: 36px;
+    --space_9xl: 52px;
+    --space_10xl: 56px;
+
+    /*font sizes*/
+    --text_s: 13px;
+    --text_m: 15px;
+    --text_l: 16px;
+    --text_xl: 18px;
+    --text_xxl: 24px;
+
+    /*heights*/
+    --height_xxs: 16px;
+    --height_xs: 22px;
+    --height_s: 24px;
+    --height_m: 28px;
+    --height_l: 30px;
+    --height_xl: 36px;
+
+    /*letter-spacing*/
+    --letter-spacing_xxs: 0.06px;
+    --letter-spacing_s: 0.25px;
+
+    /*Sizes*/
+    --workarea-width: 824px;
+    --workarea-width_mobileFull: var(--workarea-width);
+    /*--workarea-width: 80%;*/
+    --line-height_s: 16px;
+    --line-height_m: 18px;
+    --line-height_l: 20px;
+
+    /*LAYOUT*/
+    --main-content_top-space: var(--space_xxxs);
+    --main-content_bottom-space: var(--space_4xl);
+
+    /*FOOTER*/
+    --footer-link-size: var(--text_s);
+    --footer-height: 32px;
+    --footer-link-line-height: var(--line-height_s);
+    --footer-link-line-height_copyright: var(--line-height_m);
+    --links-color: var(--text-color_secondary);
+    --links-hover: var(--red);
+    --links-active: var(--red);
+    --footer-background: var(--blue-gray-50);
+    --footer_flex-direction: "row";
+    --footer-link_letter-spacing: var(--letter-spacing_xxs);
+
+    /*FIELD_INPUT*/
+    --input_height: var(--height_xl);
+    --input_horizontal-space: var(--space_s);
+    --input_placeholder-color: var(--form-input_placeholder-color);
+    --input-label_space-bottom: var(--space_xxxxs);
+    --input-label_space-top: var(--space_xxs);
+    --input-input_space-bottom: var(--space_xxxs);
+    --input_compulsory-sign-color: var(--error-red);
+    --input_clear-icon-size: var(--height_xl);
+    --input_inline-width: var(--space_9xl);
+    --input_inline-horizontal-space: var(--space_xxxs);
+
+    /*HEADER*/
+    --header-space-vh: var(--space_xxs);
+    --title_color_logo: var(--blue-gray-500);
+    --title_color: var(--font-family_main);
+    --logo-text-size: var(--text_xxl);
+    --logo-height_common: var(--height_l);
+    --logo-height_common_logo: var(--height_m);
+    --logo-height_detail: var(--height_xl);
+    --logo_letter-spacing: var(--letter-spacing_s);
+    --header_button-left-space: var(--space_xxxs);
+
+    /*BUTTON*/
+    --button-text_display: "inline-block";
+    --button-space: var(--space_s);
+    --button-space_large: var(--space_4xl);
+    --button-space-icon: var(--space_6xl);
+    --button-text-size: var(--text_s);
+    --button-height: var(--height_m);
+    --button-height_large: var(--height_xl);
+    --button-background-color: var(--light-gray);
+    --button-background-color_disabled: var(--blue-gray-75);
+    --button-color_disabled: var(--blue-gray-450);
+    --button-background-color_hover: var(--blue-gray-100);
+    --button-stroke-color_active: var(--blue-gray-200);
+    --button-background-color_primary: var(--project-yellow);
+    --button-background-color_primary_hover: var(--project-yellow_dark);
+    --button-stroke-color_primary_active: var(--project-yellow_brown);
+    --icon-settings: url("assets/img/icons/settings.svg");
+    --icon-rebuild: url("assets/img/icons/rebuild.svg");
+    --icon-clear: url("assets/img/icons/clear.svg");
+    --icon-play: url("assets/img/icons/play.svg");
+    --icon-author: url("assets/img/icons/man.svg");
+    --icon-branch: url("assets/img/icons/branch.svg");
+    --icon-success: url("assets/img/icons/success.svg");
+    --icon-waiting: url("assets/img/icons/waiting.svg");
+    --icon-error: url("assets/img/icons/error.svg");
+    --icon-timeInterval: url("assets/img/icons/timeInterval.svg");
+    --icon-date: url("assets/img/icons/date.svg");
+    --button-icon: var(--icon-play);
+
+    /*ACTION CARD*/
+    --action-card_image-size: 124px;
+    --action-card_max-width: 264px;
+    --action-card_image-background: url("assets/img/icons/service.svg");
+    --action-card_image-space-bottom: var(--space_7xl);
+    --action-card_description-space-bottom: var(--space_5xl);
+
+    /*FORM*/
+    --form-width: 474px;
+    --form-input_border-color: var(--blue-gray-90);
+    --form-inline-input_vertical-space: var(--space_xs);
+    --form-input_border-radius: 4px;
+    --form-input_border-color_active: var(--blue-gray-200);
+    --form-input_placeholder-color: var(--blue-gray-150);
+    --form-input_unit-color: var(--blue-gray-600);
+    --form-name_font-size: var(--text_m);
+    --form-name_color: var(--text-color_main);
+    --form-name_padding-bottom: var(--space_xxxs);
+    --form-name_letter-spacing: 0;
+    --form-name_line-height: var(--line-height_l);
+    --form_line-height: var(--line-height_m);
+    --form-description_color: var(--blue-gray-500);
+    --form-field_top: var(--space_xxs);
+    --form-field_bottom: var(--space_xxxs);
+    --form-body_vertical-space: var(--space_xs);
+
+    /*ICON LABELS*/
+    --icon_size: var(--height_xxs);
+    --icon_label-space: var(--space_xxxxxs);
+    --icon_label-line-height: var(--line-height_s);
+    --icon_label-font-size: var(--font-size_default);
+    --icon_label-font-color: var(--text-color_main);
+    --icon_image-path: var(--icon-success);
+
+    /*COMMIT*/
+    --commit_vertical-space: var(--space_xs);
+    --commit_left-space: var(--space_10xl);
+    --commit_right-space: var(--space_5xl);
+    --commit_shadow-color: var(--gray-opacity);
+    --commit_border-radius: var(--space_xxxxs);
+    --commit_title-font-size: var(--text_m);
+    --commit_title-left-space: var(--space_xxxxxs);
+    --commit_info-color: var(--blue-gray-550);
+    --commit_commit-id-line-height: var(--line-height_s);
+    --commit_commit-id-left-space: var(--space_xxxxxs);
+    --commit_author-left-space: var(--space_xxxs);
+    --commit_title-line-height: var(--line-height_l);
+    --commit_content-row-space-bottom: var(--space_xxxs);
+    --commit_date-row-space-bottom: var(--space_xs);
+    --commit_content-border-bottom: var(--blue-gray-50);
+    --commit_bottom-space: var(--space_xxxs);
+    --commit_box-shadow: 0 1px 1px var(--commit_shadow-color), 0 0 1px var(--commit_shadow-color);
+    --commit_content-bottom-border: 1px solid var(--commit_content-border-bottom);
+    --commit_detail_content-bottom-space: var(--space_xxxs);
+    --commit_detail_datetime-horizontal-space: var(--space_xxxs);
+
+    /*LOG*/
+    --log_background-color: var(--blue-gray-75);
+    --log_border-radius: var(--space_xxxxs);
+    --log_padding-vertical: var(--space_xxxs);
+    --log_padding-horizontal: var(--space_xs);
+}
+
+@media (max-width: 856px) {
+    :root {
+        --workarea-width: 90%;
+    }
+}
+
+/*From bootstrap*/
+@media (max-width: 575.98px) {
+    :root {
+        --workarea-width_mobileFull: 100%;
+
+        --main-content_top-space: var(--space_xxxs);
+        --main-content_bottom-space: var(--space_xl);
+        --workarea-width: calc(100% - 32px);
+
+        /*HEADER*/
+        --header-space-vh: var(--space_xs);
+        --logo-text-size: var(--text_xl);
+        --logo-height_common: var(--height_xs);
+        --logo-height_common_logo: var(--height_xs);
+        --logo-height_detail: var(--height_xs);
+
+        /*FOOTER*/
+        --footer-link-line-height: var(--line-height_m);
+        --footer-height: 44px;
+        --footer_flex-direction: "column";
+
+        /*BUTTON*/
+        --button-text_display: none;
+
+        /*FORMS*/
+        --form-width: 100%;
+        --form-inline-input_vertical-space: var(--space_xxxs);
+        --form-body_vertical-space: var(--space_xxxxxs);
+        --input_inline-horizontal-space: var(--space_xxxs);
+
+        /*ICONS*/
+        --icon-success: url("assets/img/icons/success_mobile.svg");
+        --icon-waiting: url("assets/img/icons/waiting_mobile.svg");
+        --icon-error: url("assets/img/icons/error_mobile.svg");
+
+        /*COMMIT*/
+        --commit_author-left-space: 0;
+        --commit_title-left-space: 0;
+        --commit_vertical-space: var(--space_xl);
+        --commit_right-space: var(--space_xs);
+        --commit_datetime-horizontal-space: var(--space_xxxs);
+        --commit_left-space: var(--space_8xl);
+        --commit_items-top-space: var(--space_xxxs);
+        --commit_date-row-space-bottom: 0;
+
+        /*LOG*/
+        --log_border-radius: 0;
+    }
+
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("assets/fonts/PyVcRbwHetz0gOVWLonWH7Od8zM.woff2") format("woff2"), url("assets/fonts/bIx8jOfCEfR-mECoDUEZywDBuHA.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("assets/fonts/7_GKBdKFbUPzKlghJRv55xgz0FQ.woff2") format("woff2"), url("assets/fonts/SmqPmIMEXrW4lOY8QrhTUVDbrro.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "YS Text";
+    src: url("assets/fonts/6Roy0LCd05cK4nNCipgzheYcNVU.woff2") format("woff2"), url("assets/fonts/KtHQR1erf3spayoIM4M4ngg0e2E.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}

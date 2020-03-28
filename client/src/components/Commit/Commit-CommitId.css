@@ -1,0 +1,5 @@
+.Commit-CommitId {
+    color: var(--commit_info-color);
+    line-height: var(--commit_commit-id-line-height);
+    margin-left: var(--commit_commit-id-left-space);
+}

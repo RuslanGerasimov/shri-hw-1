@@ -1,0 +1,5 @@
+.Footer-Links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}

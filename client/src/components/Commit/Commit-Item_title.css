@@ -1,0 +1,19 @@
+.Commit-Item_title {
+    font-size: var(--commit_title-font-size);
+    line-height: var(--commit_title-line-height);
+    margin-left: var(--commit_title-left-space);
+    letter-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 575.98px) {
+    .Commit-Item_title {
+        white-space: normal;
+    }
+}
+
+.Commit_detail .Commit-Item_title {
+    white-space: normal;
+}

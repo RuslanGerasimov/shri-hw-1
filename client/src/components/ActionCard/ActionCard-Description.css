@@ -1,0 +1,5 @@
+.ActionCard-Description {
+    margin-bottom: var(--action-card_description-space-bottom);
+    text-align: center;
+    line-height: 125%;
+}

@@ -1,0 +1,10 @@
+.InputField_compulsory {
+
+}
+
+.InputField_compulsory > .InputField-Label::after {
+    content: "*";
+    position: relative;
+    right: -2px;
+    color: var(--input_compulsory-sign-color);
+}

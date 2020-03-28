@@ -1,0 +1,6 @@
+.ActionCard-Image {
+    margin-bottom: var(--action-card_image-space-bottom);
+    width: var(--action-card_image-size);
+    height: var(--action-card_image-size);
+    background: var(--action-card_image-background);
+}

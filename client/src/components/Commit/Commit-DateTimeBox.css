@@ -1,0 +1,17 @@
+.Commit-DateTimeBox {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.Commit_detail > .Commit-DateTimeBox {
+    flex-direction: row;
+    padding-top: var(--commit_detail_content-bottom-space);
+}
+
+@media (max-width: 575.98px) {
+    .Commit-DateTimeBox {
+        flex-direction: row;
+        margin-top: var(--commit_items-top-space);
+    }
+}

@@ -1,0 +1,18 @@
+.Button-Text {
+    padding: 0 var(--button-space);
+}
+
+.Button-Icon + .Button-Text {
+    padding-left: var(--button-space-icon);
+    display: var(--button-text_display);
+}
+
+.Button_large > .Button-Text {
+    padding: 0 var(--button-space_large);
+}
+
+@media (max-width: 575.98px) {
+    .Button-Text {
+        margin: 0 auto;
+    }
+}
