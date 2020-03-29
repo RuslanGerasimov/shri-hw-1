@@ -152,6 +152,7 @@
     --form-inline-input_vertical-space: var(--space_xs);
     --form-input_border-radius: 4px;
     --form-input_border-color_active: var(--blue-gray-200);
+    --form-input_border-color_error: var(--error-red);
     --form-input_placeholder-color: var(--blue-gray-150);
     --form-input_unit-color: var(--blue-gray-600);
     --form-name_font-size: var(--text_m);

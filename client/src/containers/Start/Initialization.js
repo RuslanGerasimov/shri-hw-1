@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../style.css';
 import '../../vars.css';
 
+import Button from "../../ui/Button/Button";
 import LayoutContent from "../../hoc/Layout/Layout-Content";
+import ActionCard from "../../ui/ActionCard/ActionCard";
 import Page from "../Page/Page";
-import SettingsForm from "../../components/SettingsForm/SettingsForm";
 
-const Settings = (props) => {
+function Initialization() {
     const header = {
         logo: true,
         text: 'School CI Server',
@@ -16,11 +18,13 @@ const Settings = (props) => {
 
     return (
         <Page header={header}>
-            <LayoutContent top="l">
-                <SettingsForm />
+            <LayoutContent centered>
+                <ActionCard
+                    description="Initialization"
+                />
             </LayoutContent>
         </Page>
     );
-};
+}
 
-export default Settings;
+export default Initialization;

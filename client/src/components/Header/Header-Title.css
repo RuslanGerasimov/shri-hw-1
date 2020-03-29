@@ -5,4 +5,5 @@
     font-size: var(--logo-text-size);
     line-height: var(--logo-height_common);
     font-weight: 500;
+    text-decoration: none;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import {cn} from "@bem-react/classname";
 
 import './Form.css';
@@ -11,6 +11,7 @@ import './Form-Header.css';
 import './Form-HeaderItem.css';
 import './Form-HeaderItem_title.css';
 import Button from "../Button/Button";
+import InputField from "../InputField/InputField";
 
 export default (props) => {
     const FormBlockClass = cn('Form')();
@@ -25,20 +26,20 @@ export default (props) => {
                 <div className={FormHeaderItemClass()}>{props.description}</div>
             </div>
             <div className="Form-Body">
-                {props.fields.map(({input, id, topSpace}) => {
+                {props.fields.map((input) => {
                     const formFieldClass = cn('Form', 'Field');
-                    const mod = topSpace ? {verticalSpace: 'xs'} : null;
+                    const mod = input.topSpace ? {verticalSpace: 'xs'} : null;
 
                     return (
-                        <div key={id} className={formFieldClass(mod)}>
-                            {input}
+                        <div key={input.id} className={formFieldClass(mod)}>
+                            <InputField valueChanged={input.setValue} {...input}/>
                         </div>
                     )
                 })}
             </div>
             <div className={FormFooterClass}>
-                <Button role="submit" responsive large primary text="Save" mix={cn(FormBlockClass, 'Button')()}/>
-                <Button role="reset" responsive large text="Cancel" mix={cn(FormBlockClass, 'Button')()}/>
+                <Button disabled={!props.valid || props.disableButtons} role="submit" responsive large primary text="Save" mix={cn(FormBlockClass, 'Button')()}/>
+                <Button disabled={props.disableButtons} role="reset" responsive large text="Cancel" mix={cn(FormBlockClass, 'Button')()}/>
             </div>
         </form>
     );

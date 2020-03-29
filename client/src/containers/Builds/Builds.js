@@ -1,17 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 import '../../style.css';
 import '../../vars.css';
 
-import Button from "../../components/Button/Button";
-import Theme from "../../hoc/Theme/Theme";
-import Header from "../../containers/Header/Header";
-import Layout from "../../hoc/Layout/Layout";
-import LayoutHeader from "../../hoc/Layout/Layout-Header";
-import LayoutWrapper from "../../hoc/Layout/Layout-Wrapper";
+import Button from "../../ui/Button/Button";
 import LayoutContent from "../../hoc/Layout/Layout-Content";
-import LayoutFooter from "../../hoc/Layout/Layout-Footer";
-import Footer from "../Footer/Footer";
-import Commit from "../../components/Commit/Commit";
+import Commit from "../../ui/Commit/Commit";
+import Page from "../Page/Page";
 
 const data = [
     {
@@ -35,7 +31,7 @@ const data = [
         interval: '1 ч 20 мин'
     },
     {
-        type: 'warning',
+        type: 'waiting',
         number: '1366',
         description: 'upgrade typescript to 3.8',
         branch: 'master',
@@ -47,31 +43,28 @@ const data = [
 ];
 
 
-const Settings = (props) => {
+export default (props) => {
+    const history = useHistory();
+    const openDetail = (id) => {
+        history.push('/build/' + id);
+    };
 
     const buttons = [
         <Button text="Run build" key="play" type="play" />,
-        <Button type="settings" key="settings" />,
+        <Button link="/settings" type="settings" key="settings" />,
     ];
 
+    const header = {
+        logo: false,
+        text: 'philip1967/my-awesome-repo',
+        buttons: buttons
+    };
+
     return (
-        <Theme default>
-            <Layout>
-                <LayoutHeader>
-                    <Header title={{text: 'philip1967/my-awesome-repo'}} buttons={buttons} />
-                </LayoutHeader>
-                <LayoutWrapper>
-                    <LayoutContent top="m">
-                        {data.map((item) => <Commit {...item} key={item.hex}/>)}
-                    </LayoutContent>
-                </LayoutWrapper>
-                <LayoutFooter>
-                    <Footer copyright={"© 2020 Your Name"}
-                            links={[{id: 'Support', text: 'Support'}, {id: "Learning", text: 'Learning'}]}/>
-                </LayoutFooter>
-            </Layout>
-        </Theme>
+        <Page header={header}>
+            <LayoutContent top="m">
+                {data.map((item) => <Commit clicked={openDetail.bind(null, item.hex)} {...item} key={item.hex}/>)}
+            </LayoutContent>
+        </Page>
     );
 };
-
-export default Settings;

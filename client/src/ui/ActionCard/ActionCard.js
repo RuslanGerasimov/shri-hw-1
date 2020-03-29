@@ -20,7 +20,7 @@ export default (props) => {
                 {props.description ? props.description
                     : <Fragment>Configure repository connection<br/> and synchronization settings</Fragment>}
             </div>
-            {props.button ? (<div className={buttonClass}>
+            {props.button ? (<div className={buttonClass()}>
                 {props.button}
             </div>) : null}
         </div>

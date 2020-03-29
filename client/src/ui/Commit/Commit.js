@@ -11,7 +11,7 @@ import "./Commit-DateTimeBox.css";
 import "./Commit-Item.css";
 import "./Commit-Item_author.css";
 import "./Commit-Item_title.css";
-import IconLabel from "../IconLabel/IconLabel";
+import IconLabel from "../../ui/IconLabel/IconLabel";
 
 export default (props) => {
     const commitClass = cn('Commit');
@@ -23,7 +23,7 @@ export default (props) => {
     const commitDateClass = cn(commitClass(), 'DateTime');
 
     return (
-        <div className={commitClass({detail: !!props.detail})}>
+        <div onClick={props.clicked} className={commitClass({detail: !!props.detail})}>
             <div className={commitContentClass()}>
                 <div className={commitContentRowClass()}>
                     <IconLabel mix={commitItemClass()} large out type={props.type}>#{props.number}</IconLabel>

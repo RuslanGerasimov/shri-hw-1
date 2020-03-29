@@ -3,6 +3,7 @@ import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
 
 import './Layout.css';
+import './Layout-Header.css';
 
 export default (props) => {
     const mixedClass = props.mix;

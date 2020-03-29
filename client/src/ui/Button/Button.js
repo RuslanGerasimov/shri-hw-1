@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { cn } from "@bem-react/classname";
 import { classnames } from "@bem-react/classnames";
 
@@ -11,8 +12,10 @@ import './Button-Text.css';
 import './Button_large.css';
 import './Button_primary.css';
 import './Button_responsive.css';
+import {Link} from "react-router-dom";
 
 export default (props) => {
+    const history = useHistory();
     const buttonClass = cn('Button');
     const buttonClassName = buttonClass({
         large: !!props.large,
@@ -25,9 +28,9 @@ export default (props) => {
 
     const ButtonIcon = cn('Button', 'Icon');
     const icon = props.type ? <span className={ButtonIcon({ type: props.type })} /> : null;
-
-    return (
-        <button type={props.role} className={classnames(buttonClassName, props.mix)}>
+    return(
+        <button onClick={!props.link ? props.clicked : () => {history.push(props.link)}}
+                disabled={props.disabled} type={props.role} className={classnames(buttonClassName, props.mix)}>
             {icon}
             {text}
         </button>

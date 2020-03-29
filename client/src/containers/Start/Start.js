@@ -1,40 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../style.css';
 import '../../vars.css';
 
-import Button from "../../components/Button/Button";
-import Theme from "../../hoc/Theme/Theme";
-import Header from "../../containers/Header/Header";
-import Layout from "../../hoc/Layout/Layout";
-import LayoutHeader from "../../hoc/Layout/Layout-Header";
-import LayoutWrapper from "../../hoc/Layout/Layout-Wrapper";
+import Button from "../../ui/Button/Button";
 import LayoutContent from "../../hoc/Layout/Layout-Content";
-import LayoutFooter from "../../hoc/Layout/Layout-Footer";
-import ActionCard from "../../components/ActionCard/ActionCard";
-import Footer from "../Footer/Footer";
+import ActionCard from "../../ui/ActionCard/ActionCard";
+import Page from "../Page/Page";
 
-function App() {
+const Start = () => {
+    const header = {
+        logo: true,
+        text: 'School CI Server',
+        link: '/',
+        buttons: [<Button link="/settings" key="settings" type="settings" text="Settings"/>]
+    };
+
     return (
-        <Theme default>
-            <Layout>
-                <LayoutHeader>
-                    <Header title={{type: 'logo', text: 'School CI Server'}}
-                            buttons={[<Button type="settings" text="Settings"/>]}/>
-                </LayoutHeader>
-                <LayoutWrapper>
-                    <LayoutContent centered>
-                        <ActionCard
-                            button={<Button large primary text="Open settings"/>}
-                        />
-                    </LayoutContent>
-                </LayoutWrapper>
-                <LayoutFooter>
-                    <Footer copyright={"© 2020 Your Name"}
-                            links={[{text: 'Support'}, {text: 'Learning'}]}/>
-                </LayoutFooter>
-            </Layout>
-        </Theme>
+        <Page header={header}>
+            <LayoutContent centered>
+                <ActionCard
+                    button={<Link to="/settings"><Button large primary text="Open settings"/></Link>}
+                />
+            </LayoutContent>
+        </Page>
     );
 }
 
-export default App;
+export default Start;

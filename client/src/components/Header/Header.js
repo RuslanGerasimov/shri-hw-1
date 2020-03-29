@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { cn } from '@bem-react/classname';
 import { classnames } from '@bem-react/classnames';
 
@@ -25,9 +26,14 @@ export default (props) => {
 
     return (
         <div className={resultedBlockClass}>
-            <div className={headerTitleClass({logo: props.title.type === 'logo'})}>
-                {props.title.text}
-            </div>
+            {props.title.link ? (
+                <Link className={headerTitleClass({logo: props.title.type === 'logo'})}
+                      to={props.title.link}>{props.title.text}</Link>
+            ): (
+                <div className={headerTitleClass({logo: props.title.type === 'logo'})}>
+                    {props.title.text}
+                </div>
+            )}
             {headerButtons}
         </div>
     );
