@@ -196,6 +196,12 @@
     --commit_detail_content-bottom-space: var(--space_xxxs);
     --commit_detail_datetime-horizontal-space: var(--space_xxxs);
 
+    /*MODAL*/
+    --modal-border-radius: var(--space_xxxxxs);
+    --modal-padding: var(--space_4xl);
+    --modal-width: 485px;
+    --modal-shadow: 0px 6px 16px var(--commit_shadow-color), 0px 0px 1px var(--commit_shadow-color);
+
     /*LOG*/
     --log_background-color: var(--blue-gray-75);
     --log_border-radius: var(--space_xxxxs);

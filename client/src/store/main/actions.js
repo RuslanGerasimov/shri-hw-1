@@ -5,7 +5,7 @@ import * as settingsActions from '../settings/actions';
 export const initApp = () => {
     return (dispatch) => {
         const fetchPromise = new Promise(((resolve, reject) => {
-            dispatch(settingsActions.fetchSettings(resolve));
+            dispatch(settingsActions.fetchSettings(resolve, reject));
         }));
         fetchPromise.then(() => {
             dispatch({type: APP_INIT});

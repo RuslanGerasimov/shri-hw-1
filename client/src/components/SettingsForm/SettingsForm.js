@@ -9,6 +9,8 @@ import compulsory from "../../ui/Form/validators/compulsory";
 import numbersOnly from "../../ui/Form/validators/numbersOnly";
 
 const SettingsForm = (props) => {
+    const [formState, setFormState] = useState({ requestIsProcessing: false, success: false, processed: false });
+
     const inputInitial = [
         {
             label: "GitHub repository",
@@ -18,7 +20,7 @@ const SettingsForm = (props) => {
             type: 'text',
             id: 'repo',
             error: useState(false),
-            value: useState(props.repo),
+            value: props.repo,
             validators : [
                 compulsory
             ]
@@ -26,11 +28,11 @@ const SettingsForm = (props) => {
         {
             label: "Build command",
             placeholder: "enter command to run",
-            value: useState(props.command),
+            value: props.command,
             showClear: true,
             compulsory: true,
             type: 'text',
-            id: 'buildCommand',
+            id: 'command',
             error: useState(false),
             validators : [
                 compulsory
@@ -39,7 +41,7 @@ const SettingsForm = (props) => {
         {
             label: "Main branch",
             placeholder: "master",
-            value: useState(props.mainBranch),
+            value: props.mainBranch,
             showClear: true,
             compulsory: false,
             type: 'text',
@@ -49,7 +51,7 @@ const SettingsForm = (props) => {
         {
             label: "Synchronize every",
             placeholder: "10",
-            value: useState(props.interval),
+            value: props.interval,
             showClear: false,
             compulsory: false,
             type: 'text',
@@ -65,8 +67,6 @@ const SettingsForm = (props) => {
     ].map((input) => {
         return {
             ...input,
-            value: input.value[0],
-            setValue: input.value[1],
             error: input.error[0],
             setError: input.error[1],
         }
@@ -78,8 +78,8 @@ const SettingsForm = (props) => {
            ...input,
            valueChanged: (value) => {
                const isValid = validateInput(input.validators, value);
+               props.setValue(input.id, value);
                input.setError(!isValid);
-               input.setValue(value);
            }
        }
     });
@@ -99,17 +99,48 @@ const SettingsForm = (props) => {
 
     const submitForm = (ev) => {
         ev.preventDefault();
-        inputs.reduce((res, input) => {
+        const formIsaValid = inputs.reduce((res, input) => {
             const isValid = validateInput(input.validators, input.value);
             input.setError(!isValid);
             return isValid && res;
         }, true);
+        if(formIsaValid) {
+            props.setProcessIsGoing(true);
+            setFormState({
+                ...formState,
+                requestIsProcessing: true
+            });
+
+            props.saveSettings({
+                repoName: props.repo,
+                buildCommand: props.command,
+                mainBranch: props.mainBranch,
+                period: props.interval
+            }).then((res) => {
+                setFormState({
+                    processed: true,
+                    success: true,
+                    requestIsProcessing: false
+                });
+                props.setProcessIsGoing(false);
+            }).catch((err) => {
+                setFormState({
+                    processed: true,
+                    success: false,
+                    requestIsProcessing: false
+                });
+                props.setProcessIsGoing(false);
+            });
+        }
     };
 
     const formIsInValid = inputs.reduce((res, input) => input.error || res, false);
 
     return (
         <Form valid={!formIsInValid} title="Settings"
+              result={formState.processed ?
+                  (formState.success ? "Репозитроий клонирован успешно" : "Ошибка при клонировании репозитория") : null}
+              disableButtons={props.processIsGoing}
               submitHandler={submitForm}
               resetHandler={() => { history.goBack() }}
               description="Configure repository connection and synchronization settings."
@@ -119,7 +150,12 @@ const SettingsForm = (props) => {
 
 const mapsDispatchToProps = (dispatch) => {
     return {
-        fetchSettings: () => { dispatch(actions.fetchSettings()) }
+        fetchSettings: () => { dispatch(actions.fetchSettings()) },
+        saveSettings: (data) => { return new Promise((resolve, reject) => {
+            dispatch(actions.saveSettings(data, resolve, reject));
+        }); },
+        setValue: (type, value) => {dispatch(actions.setSetting(type, value))},
+        setProcessIsGoing: (isGoing) => {dispatch(actions.setProcessIsGoing(isGoing))},
     }
 };
 
@@ -128,7 +164,8 @@ const mapStateToProps = state => {
         repo: state.settings.repo,
         mainBranch: state.settings.mainBranch,
         command: state.settings.command,
-        interval: state.settings.interval
+        interval: state.settings.interval,
+        processIsGoing: state.settings.processIsGoing
     }
 };
 

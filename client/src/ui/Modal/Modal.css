@@ -1,0 +1,8 @@
+.Modal {
+    position: absolute;
+    z-index: 100;
+    max-width: var(--modal-width);
+    padding: var(--modal-padding);
+    border-radius: var(--modal-border-radius);
+    box-shadow: var(--modal-shadow);
+}
