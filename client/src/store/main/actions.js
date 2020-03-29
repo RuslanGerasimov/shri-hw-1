@@ -9,6 +9,8 @@ export const initApp = () => {
         }));
         fetchPromise.then(() => {
             dispatch({type: APP_INIT});
+        }).catch((err) => {
+            dispatch({type: APP_INIT});
         })
     }
 };
