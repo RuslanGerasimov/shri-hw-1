@@ -25,7 +25,7 @@ const App = (props) => {
                         <Route path="/settings" component={Settings}/>
                         <Route path="/build/:id" component={Build}/>
                         <Route path="/logs" component={Builds}/>
-                        <Route path="/" component={props.settingsExists ? Builds : Start}/>
+                        <Route exact path="/" component={props.settingsExists ? Builds : Start}/>
                     </Fragment>
                 ) : (
                     <Initialization/>

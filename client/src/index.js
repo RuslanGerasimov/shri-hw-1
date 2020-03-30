@@ -5,8 +5,9 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
-import settings from './store/settings/recucers';
-import main from './store/main/recucers';
+import settings from './store/settings/reducers';
+import main from './store/main/reducers';
+import builds from './store/builds/reducers';
 
 import './index.css';
 import App from './App';
@@ -16,7 +17,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducer = combineReducers({
     main: main,
-    settings: settings
+    settings: settings,
+    builds: builds
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));

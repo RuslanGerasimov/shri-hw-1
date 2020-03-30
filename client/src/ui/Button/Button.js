@@ -12,7 +12,6 @@ import './Button-Text.css';
 import './Button_large.css';
 import './Button_primary.css';
 import './Button_responsive.css';
-import {Link} from "react-router-dom";
 
 export default (props) => {
     const history = useHistory();

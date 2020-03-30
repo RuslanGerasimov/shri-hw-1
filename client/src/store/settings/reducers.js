@@ -1,4 +1,4 @@
-import {SET_SETTINGS, GET_SETTINGS, SET_SETTING, SETTINGS_API_GOING} from './actionTypes';
+import { GET_SETTINGS, SET_SETTING, SETTINGS_API_GOING} from './actionTypes';
 
 const initialState = {
     id: null,
