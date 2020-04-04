@@ -41,7 +41,12 @@ export default (props) => {
                 ) : null}
             </div>
             <div className={FormFooterClass}>
-                <Button disabled={!props.valid || props.disableButtons} role="submit" responsive large primary text="Save" mix={cn(FormBlockClass, 'Button')()}/>
+                <Button disabled={!props.valid || props.disableButtons} role="submit"
+                        responsive
+                        large
+                        primary
+                        text={props.submitText ? props.submitText : 'Save'}
+                        mix={cn(FormBlockClass, 'Button')()}/>
                 <Button disabled={props.disableButtons} role="reset" responsive large text="Cancel" mix={cn(FormBlockClass, 'Button')()}/>
             </div>
         </form>

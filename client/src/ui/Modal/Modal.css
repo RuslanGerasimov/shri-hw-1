@@ -1,8 +1,11 @@
 .Modal {
-    position: absolute;
+    position: fixed;
+    left: calc(50% - var(--modal-width) / 2);
+    top: 50%;
     z-index: 100;
     max-width: var(--modal-width);
     padding: var(--modal-padding);
     border-radius: var(--modal-border-radius);
     box-shadow: var(--modal-shadow);
+    background-color: #fff;
 }

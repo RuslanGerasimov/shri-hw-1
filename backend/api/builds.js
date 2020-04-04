@@ -16,7 +16,7 @@ const fetchBuilds = (limit = null, offset = null) => {
 
 const fetchDetailBuild = (buildId) => {
     return new Promise((resolve, reject) => {
-        axiosApiInstance.get('/build/detail', {buildId: buildId}).then((result) => {
+        axiosApiInstance.get('/build/details?buildId=' + buildId).then((result) => {
             resolve(result.data.data);
         }).catch((err) => {
             reject(err.response)
@@ -32,7 +32,7 @@ const addBuild = (commit, author, branchName, message) => {
             branchName: branchName,
             authorName: author
         }).then((result) => {
-            resolve("ok");
+            resolve(result.data.data.id);
         }).catch((err) => {
             reject(err.response);
         })
@@ -144,9 +144,10 @@ const getBuildLog = (buildId) => {
     });
 };
 
-const startBuilding = (buildId, dateTime) => {
+const startBuilding = (buildId) => {
     return new Promise((resolve, reject) => {
-        axiosApiInstance.post('/build/start', { buildId: buildId, dateTime: dateTime }).then(() => {
+        const date = new Date();
+        axiosApiInstance.post('/build/start', { buildId: buildId, dateTime: date.toISOString() }).then(() => {
             resolve(true);
         }).catch((err) => {
             reject(err.response)

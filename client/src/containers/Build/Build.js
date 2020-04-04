@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import '../../style.css';
 import '../../vars.css';
 
 import Button from "../../ui/Button/Button";
 import LayoutContent from "../../hoc/Layout/Layout-Content";
-import Commit from "../../ui/Commit/Commit";
 import Log from "../../components/Log/Log";
 import Page from "../Page/Page";
+import DetailCommit from "../../components/DetailCommit/DetailCommit";
+import apiAxiosInstance from "../../services/axios";
+import {connect} from "react-redux";
 
 const data = {
     type: 'success',
@@ -76,22 +79,46 @@ const data = {
 };
 
 
-export default (props) => {
+const Build = (props) => {
+    const [rebuildDisabled, setRebuildDisabled] = useState(!props.commitHash);
+
+    useEffect(() => {
+        if(props.commitHash) {
+            setRebuildDisabled(false);
+        }
+    }, [props.commitHash]);
+
+    const history = useHistory();
+    const buildId = props.match.params.id;
+
+    const rebuild = () => {
+        apiAxiosInstance.post('/build/request', { commitHash: props.commitHash})
+            .then((result) => {
+                const id = result.data;
+                history.push('/build/' + id);
+            }).catch(() => {
+
+            })
+    };
+
+
     const buttons = [
-        <Button text="Rebuild" key="rebuild" type="rebuild" />,
+        <Button disabled={rebuildDisabled} text="Rebuild" clicked={rebuild} key="rebuild" type="rebuild" />,
         <Button type="settings" link="/settings" key="settings" />,
     ];
 
     const header = {
         logo: false,
-        text: 'philip1967/my-awesome-repo',
+        text: props.title ? props.title : 'philip1967/my-awesome-repo',
+        link: "/",
         buttons: buttons
     };
+
 
     return (
         <Page header={header}>
             <LayoutContent top="m" noSpace="bottom">
-                <Commit {...data} detail />
+                <DetailCommit buildId={buildId}/>
             </LayoutContent>
             <LayoutContent mobileFull noSpace="top">
                 <Log>{data.log}</Log>
@@ -99,3 +126,12 @@ export default (props) => {
         </Page>
     );
 };
+
+const mapStateToProps = state => {
+    return {
+        commitHash: state.build.commitHash,
+        title: state.settings.repo
+    }
+};
+
+export default connect(mapStateToProps, null)(Build)

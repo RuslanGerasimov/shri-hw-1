@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import settings from './store/settings/reducers';
 import main from './store/main/reducers';
 import builds from './store/builds/reducers';
+import build from './store/build/reducers';
 
 import './index.css';
 import App from './App';
@@ -18,7 +19,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducer = combineReducers({
     main: main,
     settings: settings,
-    builds: builds
+    builds: builds,
+    build: build,
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
