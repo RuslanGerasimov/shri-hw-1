@@ -21,7 +21,6 @@ export const fetchSettings = (resolve, reject) => {
             })
             .catch((err) => {
                 reject(err);
-               console.log(err);
             });
     }
 };

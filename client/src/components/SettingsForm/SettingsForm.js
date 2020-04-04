@@ -135,6 +135,14 @@ const SettingsForm = (props) => {
     };
 
     const formIsInValid = inputs.reduce((res, input) => input.error || res, false);
+    const resetForm = () => {
+        new Promise((resolve, reject) => {
+            props.fetchSettings(resolve, reject);
+        }).catch((res) => {
+            console.log(res);
+        });
+        history.goBack();
+    };
 
     return (
         <Form valid={!formIsInValid} title="Settings"
@@ -142,7 +150,7 @@ const SettingsForm = (props) => {
                   (formState.success ? "Репозитроий клонирован успешно" : "Ошибка при клонировании репозитория") : null}
               disableButtons={props.processIsGoing}
               submitHandler={submitForm}
-              resetHandler={() => { history.goBack() }}
+              resetHandler={resetForm}
               description="Configure repository connection and synchronization settings."
               fields={inputs}/>
     )
@@ -150,7 +158,7 @@ const SettingsForm = (props) => {
 
 const mapsDispatchToProps = (dispatch) => {
     return {
-        fetchSettings: () => { dispatch(actions.fetchSettings()) },
+        fetchSettings: (resolve, reject) => { dispatch(actions.fetchSettings(resolve, reject)) },
         saveSettings: (data) => { return new Promise((resolve, reject) => {
             dispatch(actions.saveSettings(data, resolve, reject));
         }); },
