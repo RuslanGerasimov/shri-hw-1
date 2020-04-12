@@ -1,39 +1,18 @@
 const path = require('path');
 const {spawn} = require('child_process');
 const {StringDecoder} = require('string_decoder');
-const fs = require('fs');
-const rimraf = require('rimraf');
+const { deleteDir, checkIfDirExists } = require('../../helpers/fs');
 
 const repositoriesDir = path.resolve(__dirname, '..', 'repositories');
-const getRepositoryFolder = repositoryName => path.resolve(repositoriesDir, repositoryName);
+const getRepositoryFolder = (repositoryName, repositoryFolder = repositoriesDir) => path.resolve(repositoryFolder, repositoryName);
 
-const cloneRepository = (repositoryName) => {
+const cloneRepository = (repositoryName, repositoryFolder = null) => {
     return new Promise((resolve, reject) => {
-        const repositoryFolder = getRepositoryFolder(repositoryName);
-        const deleteDir = new Promise((resolve, reject) => {
-            rimraf(repositoryFolder, function () {
-                console.log(...arguments);
-                resolve(true)
-            });
-        });
-        const checkIfDirExists = new Promise((resolve, reject) => {
-            fs.access(repositoriesDir, function (err) {
-                if (err && err.code === 'ENOENT') {
-                    fs.mkdir(repositoriesDir, function (err) {
-                        if (err) {
-                            reject(err)
-                        } else {
-                            resolve(true)
-                        }
-                    });
-                } else {
-                    resolve(true);
-                }
-            });
-        });
-        Promise.all([deleteDir, checkIfDirExists])
+        repositoryFolder = !repositoryFolder ? getRepositoryFolder(repositoryName) : repositoryFolder;
+
+        Promise.all([deleteDir(repositoryFolder), checkIfDirExists(repositoriesDir)])
             .then(() => {
-                const child = spawn('git', ['clone', `https://github.com/${repositoryName}`, getRepositoryFolder(repositoryName)], {
+                const child = spawn('git', ['clone', `https://github.com/${repositoryName}`, repositoryFolder], {
                     "cwd": repositoriesDir
                 });
                 let error = "";
@@ -45,12 +24,14 @@ const cloneRepository = (repositoryName) => {
                     if (!error || !code) {
                         return resolve(true);
                     } else {
-                        reject(error);
+                        deleteDir(repositoryFolder).finally(() => {reject(error);})
                     }
                 })
+
             })
             .catch((err) => {
                 console.log(err);
+                deleteDir(repositoryFolder).finally(() => {reject(err);});
             })
     })
 };
@@ -207,4 +188,4 @@ const gitPull = (repositoryName) => {
     });
 };
 
-module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch};
+module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch, getRepositoryFolder};
