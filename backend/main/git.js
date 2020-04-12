@@ -36,7 +36,7 @@ const cloneRepository = (repositoryName, repositoryFolder = null) => {
     })
 };
 
-const getCommitParam = (repoName, commitHash, type) => {
+const getCommitParam = (repoName, commitHash, type, repoDir = repositoriesDir) => {
     return new Promise((resolve, reject) => {
         const params = {
             body: '%B',
@@ -45,8 +45,9 @@ const getCommitParam = (repoName, commitHash, type) => {
             commitHash: '%H'
         };
         let output = "";
+
         const childProcess = spawn('git', ['show', commitHash, '--quiet', `--pretty=${params[type]}`], {
-            "cwd": getRepositoryFolder(repoName)
+            "cwd": getRepositoryFolder(repoName, repoDir)
         });
         const decoder = new StringDecoder('utf8');
         childProcess.stdout.on('data', function (bufferData) {
@@ -70,10 +71,10 @@ const getCommitParam = (repoName, commitHash, type) => {
     })
 };
 
-const getCommitBranch = (repoName, commitHash) => {
+const getCommitBranch = (repoName, commitHash, repoDir = repositoriesDir) => {
     return new Promise((resolve, reject) => {
         const childProcess = spawn('git', ['branch', '--contains', commitHash, '-r'], {
-            "cwd": getRepositoryFolder(repoName)
+            "cwd": getRepositoryFolder(repoName, repoDir)
         });
         childProcess.stdout.on('data', (buffer) => {
             const decoder = new StringDecoder('utf8');
@@ -91,12 +92,12 @@ const getCommitBranch = (repoName, commitHash) => {
 };
 
 
-const getIndividualLog = (commitHash, repoName) => {
+const getIndividualLog = (commitHash, repoName, repoDir = repositoriesDir) => {
     return new Promise((resolve, reject) => {
         Promise.all([
-            getCommitParam(repoName, commitHash, 'body'),
-            getCommitParam(repoName, commitHash, 'author'),
-            getCommitBranch(repoName, commitHash)
+            getCommitParam(repoName, commitHash, 'body', repoDir),
+            getCommitParam(repoName, commitHash, 'author', repoDir),
+            getCommitBranch(repoName, commitHash, repoDir)
         ]).then((promiseResults) => {
             const commitMessage = promiseResults.filter(result => result.type === 'body')[0].value;
             const author = promiseResults.filter(result => result.type === 'author')[0].value;
@@ -109,11 +110,11 @@ const getIndividualLog = (commitHash, repoName) => {
     });
 };
 
-const gitLog = (repositoryName, branchName) => {
+const gitLog = (repositoryName, branchName, repoDir = repositoriesDir) => {
     return new Promise((resolve, reject) => {
         const origin = branchName.indexOf('origin') === 0 ? branchName : 'origin/' + branchName;
         const childProcess = spawn('git', ['log', origin, '--pretty=%H%n%s%n%aN%n%cI%n%b', '--reverse'], {
-            "cwd": getRepositoryFolder(repositoryName)
+            "cwd": getRepositoryFolder(repositoryName, repoDir)
         });
         const decoder = new StringDecoder('utf8');
         const arData = [];
@@ -170,10 +171,10 @@ const gitLog = (repositoryName, branchName) => {
     })
 };
 
-const gitPull = (repositoryName) => {
+const gitPull = (repositoryName, repoDir = repositoriesDir) => {
     return new Promise((resolve, reject) => {
         const childProcess = spawn('git', ['pull'], {
-            "cwd": getRepositoryFolder(repositoryName)
+            "cwd": getRepositoryFolder(repositoryName, repoDir)
         });
         childProcess.on('exit', (code) => {
             if (!code) {
@@ -188,4 +189,4 @@ const gitPull = (repositoryName) => {
     });
 };
 
-module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch, getRepositoryFolder};
+module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch, getRepositoryFolder, getCommitParam};

@@ -5,3 +5,4 @@ node_modules
 /client/build
 backend/repositories
 repositories/*
+test/backend/main/repositories/*
