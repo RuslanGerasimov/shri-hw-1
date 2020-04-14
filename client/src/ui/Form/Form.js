@@ -25,6 +25,9 @@ export default (props) => {
                 <div className={FormHeaderItemClass({title: true})}>{props.title}</div>
                 <div className={FormHeaderItemClass()}>{props.description}</div>
             </div>
+            {props.result ? (
+                <div className={cn('Form', 'Result')()}>{props.result}</div>
+            ) : null}
             <div className="Form-Body">
                 {props.fields.map((input) => {
                     const formFieldClass = cn('Form', 'Field');
@@ -36,9 +39,6 @@ export default (props) => {
                         </div>
                     )
                 })}
-                {props.result ? (
-                    <div className={cn('Form', 'Field')()}>{props.result}</div>
-                ) : null}
             </div>
             <div className={FormFooterClass}>
                 <Button disabled={!props.valid || props.disableButtons} role="submit"
