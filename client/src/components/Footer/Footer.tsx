@@ -9,8 +9,13 @@ import './Footer-Item_copyright.css';
 import './Footer-Links.css';
 import './Footer-Links_copyright.css';
 
+export interface FooterProps {
+    mix?: string,
+    links: Array<{id: string|number, text: string}>,
+    copyright?: string
+}
 
-export default (props) => {
+const Footer: React.FC<FooterProps> = (props) => {
     const footerClass = cn('Footer');
     const footerContentClass = cn('Footer', 'Content');
     const footerLinksClass = cn('Footer', 'Links');
@@ -35,4 +40,6 @@ export default (props) => {
             </div>
         </div>
     );
-}
+};
+
+export default Footer;

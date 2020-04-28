@@ -4,7 +4,12 @@ import { classnames } from '@bem-react/classnames';
 
 import './Layout-Header.css';
 
-export  default (props) => {
+interface LayoutHeaderProps {
+    mix: string,
+    children: React.Component
+}
+
+const LayoutHeader: React.FC<LayoutHeaderProps> = (props) => {
     const mixedClass = props.mix;
     const cmpClass = classnames(cn('Layout', 'Header')(), mixedClass);
 
@@ -13,4 +18,6 @@ export  default (props) => {
             {props.children}
         </div>
     );
-}
+};
+
+export  default LayoutHeader;

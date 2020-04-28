@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
 
@@ -7,8 +7,36 @@ import * as actions from '../../store/settings/actions';
 import Form from "../../ui/Form/Form";
 import compulsory from "../../ui/Form/validators/compulsory";
 import numbersOnly from "../../ui/Form/validators/numbersOnly";
+import {Settings, SettingsState} from "../../store/settings/type";
+import {ThunkDispatch} from "redux-thunk";
 
-const SettingsForm = (props) => {
+export interface SettingsFormProps extends SettingsState {
+    setValue: (id: string, value: string) => void,
+    setProcessIsGoing: (isGoing: boolean) => void,
+    saveSettings: (data: Settings) => Promise<any>,
+    fetchSettings: (resolve: () => void, reject: () => void) => void
+}
+
+export interface Input {
+    validators?: Array<Validator>,
+    setError: (isValid: boolean) => void,
+    id: string,
+    label: string,
+    placeholder: string,
+    value: string,
+    showClear: boolean,
+    compulsory: boolean,
+    type: string,
+    inline?: boolean,
+    unit?: string,
+    topSpace?: boolean,
+    error: boolean,
+    valueChanged?: (val: string) => void
+}
+
+type Validator = (val: string) => boolean;
+
+const SettingsForm: React.FC<SettingsFormProps> = (props) => {
     const [formState, setFormState] = useState({ requestIsProcessing: false, success: false, processed: false });
 
     const inputInitial = [
@@ -73,18 +101,21 @@ const SettingsForm = (props) => {
     });
 
     const history = useHistory();
-    const inputs = inputInitial.map((input) => {
-       return {
-           ...input,
-           valueChanged: (value) => {
-               const isValid = validateInput(input.validators, value);
-               props.setValue(input.id, value);
-               input.setError(!isValid);
-           }
-       }
-    });
 
-    const validateInput = (validators, value) => {
+    const changeValue: (input: Input) => Input = (input: Input) => {
+        return {
+            ...input,
+            valueChanged: (value: string) => {
+                const isValid = input.validators ? validateInput(input.validators, value) : true;
+                props.setValue(input.id, value);
+                input.setError(!isValid);
+            }
+        }
+    };
+
+    const inputs = inputInitial.map(changeValue);
+
+    const validateInput = (validators: Array<(val: string) => boolean>, value: string) => {
         let result = true;
         if(validators && Array.isArray(validators)) {
             validators.forEach((validationFunc) => {
@@ -97,10 +128,10 @@ const SettingsForm = (props) => {
         return result;
     };
 
-    const submitForm = (ev) => {
+    const submitForm = (ev: React.FormEvent) => {
         ev.preventDefault();
-        const formIsaValid = inputs.reduce((res, input) => {
-            const isValid = validateInput(input.validators, input.value);
+        const formIsaValid = inputs.reduce((res: boolean, input: Input) => {
+            const isValid = input.validators ? validateInput(input.validators, input.value) : true;
             input.setError(!isValid);
             return isValid && res;
         }, true);
@@ -112,18 +143,18 @@ const SettingsForm = (props) => {
             });
 
             props.saveSettings({
-                repoName: props.repo,
-                buildCommand: props.command,
+                repo: props.repo,
+                command: props.command,
                 mainBranch: props.mainBranch,
-                period: props.interval
-            }).then((res) => {
+                interval: props.interval
+            }).then(() => {
                 setFormState({
                     processed: true,
                     success: true,
                     requestIsProcessing: false
                 });
                 props.setProcessIsGoing(false);
-            }).catch((err) => {
+            }).catch(() => {
                 setFormState({
                     processed: true,
                     success: false,
@@ -134,7 +165,7 @@ const SettingsForm = (props) => {
         }
     };
 
-    const formIsInValid = inputs.reduce((res, input) => input.error || res, false);
+    const formIsInValid = inputs.reduce((res: boolean, input: Input) => input.error || res, false);
     const resetForm = () => {
         new Promise((resolve, reject) => {
             props.fetchSettings(resolve, reject);
@@ -156,18 +187,19 @@ const SettingsForm = (props) => {
     )
 };
 
-const mapsDispatchToProps = (dispatch) => {
+const mapsDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => {
     return {
-        fetchSettings: (resolve, reject) => { dispatch(actions.fetchSettings(resolve, reject)) },
-        saveSettings: (data) => { return new Promise((resolve, reject) => {
+        fetchSettings: (resolve: () => void, reject: () => void) => { dispatch(actions.fetchSettings(resolve, reject)) },
+        saveSettings: (data: Settings) => { return new Promise((resolve, reject) => {
             dispatch(actions.saveSettings(data, resolve, reject));
         }); },
-        setValue: (type, value) => {dispatch(actions.setSetting(type, value))},
-        setProcessIsGoing: (isGoing) => {dispatch(actions.setProcessIsGoing(isGoing))},
+        setValue: (type: string, value: string) => {dispatch(actions.setSetting(type, value))},
+        setProcessIsGoing: (isGoing: boolean) => {dispatch(actions.setProcessIsGoing(isGoing))},
     }
 };
 
-const mapStateToProps = state => {
+
+const mapStateToProps = (state: {settings: SettingsState}) => {
     return {
         repo: state.settings.repo,
         mainBranch: state.settings.mainBranch,

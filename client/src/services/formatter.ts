@@ -13,26 +13,26 @@ const months = [
     'декабрь'
 ];
 
-export const formatDate = (date) => {
+export const formatDate: (date: string) => string = (date) => {
     if(!date) {
-        return null;
+        return '';
     }
 
     const dateObject = new Date(date);
     const day = dateObject.getDate();
     const month = months[dateObject.getMonth()].slice(0, 3);
-    let hour = dateObject.getHours();
-    hour = hour < 10 ? '0' + hour : hour;
-    let minutes = dateObject.getMinutes();
-    minutes = minutes < 10 ? '0' + minutes : minutes;
+    const hourInt = dateObject.getHours();
+    const hour: string = hourInt < 10 ? '0' + hourInt : hourInt.toString();
+    const minutesInt = dateObject.getMinutes();
+    const minutes: string = minutesInt < 10 ? '0' + minutesInt : minutesInt.toString();
     return `${day} ${month}, ${hour}:${minutes}`;
 };
 
-export const formatDuration = (duration) => {
+export const formatDuration: (d: string|number) => string = (duration) => {
     if(!duration) {
-        return  null;
+        return  '';
     }
     const hours = Math.floor(+duration / 60);
-    const minutes = duration - hours * 60;
+    const minutes = +duration - hours * 60;
     return `${hours} ч ${minutes} мин`;
 };

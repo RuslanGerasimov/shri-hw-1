@@ -3,13 +3,15 @@ import {useHistory} from 'react-router-dom';
 import '../../style.css';
 import '../../vars.css';
 
-import Button from "../../ui/Button/Button";
+import Button, {buttonTypes} from "../../ui/Button/Button";
 import LayoutContent from "../../hoc/Layout/Layout-Content";
 import Log from "../../components/Log/Log";
 import Page from "../Page/Page";
 import DetailCommit from "../../components/DetailCommit/DetailCommit";
 import apiAxiosInstance from "../../services/axios";
 import {connect} from "react-redux";
+import {Build as BuildType} from "../../store/builds/types";
+import {Settings} from "../../store/settings/type";
 
 const data = {
     type: 'success',
@@ -24,7 +26,13 @@ const data = {
 };
 
 
-const Build = (props) => {
+export interface BuildProps {
+    match: { params: { id: string } },
+    title: string,
+    commitHash: string
+}
+
+const Build: React.FC<BuildProps> = (props) => {
     const [rebuildDisabled, setRebuildDisabled] = useState(!props.commitHash);
 
     useEffect(() => {
@@ -48,8 +56,8 @@ const Build = (props) => {
 
 
     const buttons = [
-        <Button disabled={rebuildDisabled} text="Rebuild" clicked={rebuild} key="rebuild" type="rebuild"/>,
-        <Button type="settings" link="/settings" key="settings"/>,
+        <Button disabled={rebuildDisabled} role={buttonTypes.button} text="Rebuild" clicked={rebuild} key="rebuild" type="rebuild"/>,
+        <Button type="settings" link="/settings" role={buttonTypes.button} key="settings"  disabled={false} />,
     ];
 
     const header = {
@@ -63,7 +71,7 @@ const Build = (props) => {
     return (
         <Page header={header}>
             <LayoutContent top="m" noSpace="bottom">
-                <DetailCommit buildId={buildId}/>
+                <DetailCommit id={buildId}/>
             </LayoutContent>
             <LayoutContent mobileFull noSpace="top">
                 <Log>{data.log}</Log>
@@ -72,7 +80,7 @@ const Build = (props) => {
     );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: {settings: Settings, build: BuildType}) => {
     return {
         commitHash: state.build.commitHash,
         title: state.settings.repo

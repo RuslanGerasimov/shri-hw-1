@@ -4,7 +4,11 @@ import { cn } from '@bem-react/classname';
 import "./Theme.css"
 import "./Theme_default.css"
 
-export default (props) => {
+export interface ThemeProps {
+    default?: boolean
+}
+
+const Theme: React.FC<ThemeProps> = (props) => {
     const theme = cn('Theme');
 
     return (
@@ -12,4 +16,6 @@ export default (props) => {
             {props.children}
         </div>
     );
-}
+};
+
+export default Theme;

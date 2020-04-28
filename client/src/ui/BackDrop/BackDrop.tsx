@@ -2,7 +2,7 @@ import React from "react";
 import {cn} from "@bem-react/classname";
 import './BackDrop.css';
 
-export default (props) => {
+const BackDrop: React.FC<{clicked: React.EventHandler<any> }> =  (props) => {
     const backDropClass = cn('BackDrop');
 
     return(
@@ -10,4 +10,6 @@ export default (props) => {
             {props.children}
         </div>
     );
-}
+};
+
+export default BackDrop;

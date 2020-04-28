@@ -5,16 +5,32 @@ import Theme from "../../hoc/Theme/Theme";
 import Layout from "../../hoc/Layout/Layout";
 import LayoutWrapper from "../../hoc/Layout/Layout-Wrapper";
 import LayoutFooter from "../../hoc/Layout/Layout-Footer";
-import Header from "../../components/Header/Header";
+import Header, {HeaderProps, titleTypes} from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
-export default (props) => {
+export interface PageProps {
+    header: {
+        logo: boolean,
+        text: string,
+        link: string
+    }
+}
+
+const Page: React.FC<PageProps> = (props) => {
+    const headerProps: HeaderProps = {
+        buttons: [],
+        mix: cn('Layout', 'Header')(),
+        title: {
+            type: props.header.logo ? titleTypes.logo : titleTypes.text,
+            text: props.header.text,
+            link: props.header.link
+        }
+    };
+
     return (
         <Theme default>
             <Layout>
-                <Header mix={cn('Layout', 'Header')()}
-                    title={{type: props.header.logo ? 'logo' : 'text', text: props.header.text, link: props.header.link}}
-                    buttons={props.header.buttons}/>
+                <Header title={headerProps.title} mix={headerProps.mix} buttons={[]} />
                 <LayoutWrapper>
                     {props.children}
                 </LayoutWrapper>
@@ -25,4 +41,6 @@ export default (props) => {
             </Layout>
         </Theme>
     );
-}
+};
+
+export default Page;

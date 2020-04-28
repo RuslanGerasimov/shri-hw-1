@@ -5,8 +5,8 @@ import { classnames } from '@bem-react/classnames';
 import './Layout.css';
 import './Layout-Header.css';
 
-export default (props) => {
-    const mixedClass = props.mix;
+const Layout: React.FC<{ mix?: string }> = (props) => {
+    const mixedClass = props.mix ? props.mix : '';
     const layoutClass = classnames(cn('Layout')(), mixedClass);
 
     return (
@@ -14,4 +14,6 @@ export default (props) => {
             {props.children}
         </div>
     );
-}
+};
+
+export default Layout;

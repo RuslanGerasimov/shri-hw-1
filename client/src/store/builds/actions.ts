@@ -1,7 +1,8 @@
 import { SET_BUILDS } from './actionTypes';
 import apiAxiosInstance from "../../services/axios";
+import { ThunkAction} from 'redux-thunk';
 
-export const fetchBuilds = () => {
+export const fetchBuilds = (): ThunkAction<void, any, unknown, any> => {
     return (dispatch) => {
         apiAxiosInstance.get('/builds')
             .then(({data: builds}) => {

@@ -1,9 +1,11 @@
 import { GET_SETTINGS, SET_SETTING, SETTINGS_API_GOING} from './actionTypes';
 import apiAxiosInstance from '../../services/axios';
+import {Settings} from "./type";
+import {ThunkDispatch} from "redux-thunk";
 
 
-export const fetchSettings = (resolve, reject) => {
-    return (dispatch) => {
+export const fetchSettings = (resolve: (data: boolean) => void, reject: (status: string) => void) => {
+    return (dispatch: ThunkDispatch<any, any, any>) => {
         apiAxiosInstance.get('/settings')
             .then((res) => {
                 const data = res.data;
@@ -25,22 +27,23 @@ export const fetchSettings = (resolve, reject) => {
     }
 };
 
-export const saveSettings = ({repoName, buildCommand, mainBranch, period}, resolve, reject) => {
-    return (dispatch) => {
+
+export const saveSettings = (settings: Settings, resolve: (data: any) => void, reject: (errorStatus: string) => void) => {
+    return (dispatch: ThunkDispatch<any, any, any>) => {
         apiAxiosInstance.post('/settings', {
-            repoName,
-            buildCommand,
-            mainBranch,
-            period: +period
+            repoName: settings.repo,
+            buildCommand: settings.command,
+            mainBranch: settings.mainBranch,
+            period: +settings.interval
         }).then((result) => {
             resolve(result.data);
             dispatch({
                 type: GET_SETTINGS,
                 payload: {
-                    repo: repoName,
-                    mainBranch: mainBranch,
-                    command: buildCommand,
-                    interval: period
+                    repo: settings.repo,
+                    mainBranch: settings.command,
+                    command: settings.mainBranch,
+                    interval: +settings.interval
                 }
             });
         }).catch((response) => {
@@ -50,7 +53,7 @@ export const saveSettings = ({repoName, buildCommand, mainBranch, period}, resol
     }
 };
 
-export const setSetting = (type, value) => {
+export const setSetting = (type: string, value: string) => {
     return {
         type: SET_SETTING,
         payload: {
@@ -60,7 +63,7 @@ export const setSetting = (type, value) => {
     }
 };
 
-export const setProcessIsGoing = (val) => {
+export const setProcessIsGoing = (val?: boolean) => {
     return {
         type: SETTINGS_API_GOING,
         payload: {

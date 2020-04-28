@@ -5,16 +5,20 @@ import { useHistory } from 'react-router-dom';
 import Form from "../../ui/Form/Form";
 import compulsory from "../../ui/Form/validators/compulsory";
 
-const BuildForm = (props) => {
+export interface BuildFormProps {
+    resetHandler?: object
+}
+
+const BuildForm: React.FC<BuildFormProps> = (props) => {
     const history = useHistory();
     const [formState, setFormState] = useState({requestIsProcessing: false, success: false, processed: false});
     const [commitHex, setCommitToBuild] = useState('');
 
-    const setProcessIsGoing = (isGoing) => setFormState({
+    const setProcessIsGoing = (isGoing?: boolean) => setFormState({
         ...formState,
         requestIsProcessing: !!isGoing
     });
-    const setResult = (isSuccess) => {
+    const setResult = (isSuccess?: boolean) => {
         setFormState({
             ...formState,
             processed: true,
@@ -50,7 +54,7 @@ const BuildForm = (props) => {
     const inputs = inputInitial.map((input) => {
         return {
             ...input,
-            valueChanged: (value) => {
+            valueChanged: (value: string) => {
                 const isValid = validateInput(input.validators, value);
                 input.setValue(value);
                 input.setError(!isValid);
@@ -58,7 +62,7 @@ const BuildForm = (props) => {
         }
     });
 
-    const validateInput = (validators, value) => {
+    const validateInput = (validators: ((val: string) => boolean)[], value: string) => {
         let result = true;
         if (validators && Array.isArray(validators)) {
             validators.forEach((validationFunc) => {
@@ -71,7 +75,7 @@ const BuildForm = (props) => {
         return result;
     };
 
-    const submitForm = (ev) => {
+    const submitForm = (ev: React.FormEvent) => {
         ev.preventDefault();
         setProcessIsGoing(true);
         apiAxiosInstance.post('/build/request', { commitHash: commitHex})
@@ -92,7 +96,7 @@ const BuildForm = (props) => {
               title="New build"
               result={formState.processed ?
                   (formState.success ? "Билд поставлен в очередь" : "Ошибка при попытке поставить билд а очередь") : null}
-              disableButtons={formState.processIsGoing}
+              disableButtons={formState.requestIsProcessing}
               submitHandler={submitForm}
               resetHandler={props.resetHandler}
               sumbitText="Run Build"

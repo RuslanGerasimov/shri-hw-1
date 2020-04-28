@@ -7,7 +7,7 @@ import './ActionCard-Description.css';
 import './ActionCard-Image.css';
 
 
-export default (props) => {
+const ActionCard: React.FC<{ description?: string, button?:React.ReactElement }> = (props) => {
     const blockClass = cn('ActionCard');
     const imageClass = cn(blockClass(), 'Image');
     const descClass = cn(blockClass(), 'Description');
@@ -25,4 +25,6 @@ export default (props) => {
             </div>) : null}
         </div>
     );
-}
+};
+
+export default ActionCard;

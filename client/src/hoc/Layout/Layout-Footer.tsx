@@ -4,7 +4,11 @@ import { classnames } from '@bem-react/classnames';
 
 import './Layout-Footer.css';
 
-export  default (props) => {
+export interface LayoutFooterProps {
+    mix?: string,
+}
+
+const LayoutFooter: React.FC<LayoutFooterProps> = (props) => {
     const mixedClass = props.mix;
     const cmpClass = classnames(cn('Layout', 'Footer')(), mixedClass);
 
@@ -13,4 +17,6 @@ export  default (props) => {
             {props.children}
         </div>
     );
-}
+};
+
+export default LayoutFooter;

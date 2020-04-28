@@ -3,10 +3,10 @@ import '../../style.css';
 import '../../vars.css';
 
 import LayoutContent from "../../hoc/Layout/Layout-Content";
-import ActionCard from "../../ui/ActionCard/ActionCard";
 import Page from "../Page/Page";
+import SettingsForm from "../../components/SettingsForm/SettingsForm";
 
-function Initialization() {
+const Settings: React.FC<never> = () => {
     const header = {
         logo: true,
         text: 'School CI Server',
@@ -16,13 +16,11 @@ function Initialization() {
 
     return (
         <Page header={header}>
-            <LayoutContent centered>
-                <ActionCard
-                    description="Initialization"
-                />
+            <LayoutContent top="l">
+                <SettingsForm/>
             </LayoutContent>
         </Page>
     );
-}
+};
 
-export default Initialization;
+export default Settings;

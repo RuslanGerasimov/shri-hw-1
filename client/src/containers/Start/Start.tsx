@@ -8,7 +8,7 @@ import LayoutContent from "../../hoc/Layout/Layout-Content";
 import ActionCard from "../../ui/ActionCard/ActionCard";
 import Page from "../Page/Page";
 
-const Start = () => {
+const Start: React.FC = () => {
     const header = {
         logo: true,
         text: 'School CI Server',
@@ -25,6 +25,6 @@ const Start = () => {
             </LayoutContent>
         </Page>
     );
-}
+};
 
 export default Start;

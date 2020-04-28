@@ -10,12 +10,13 @@ import Commits from "../../components/Commits/Commits";
 import ModalBackDrop from "../../ui/ModalBackDrop/ModalBackDrop";
 import BuildForm from "../../components/BuildForm/BuildForm";
 import {connect} from "react-redux";
+import {Settings} from "../../store/settings/type";
 
-const Builds = (props) => {
+const Builds: React.FC<{title?: string}> = (props) => {
     const [buildModal, setBuildModal] = useState(false);
     const buttons = [
         <Button text="Run build" clicked={() => { setBuildModal(!buildModal) }} key="play" type="play" />,
-        <Button link="/settings" type="settings" key="settings" />,
+        <Button link="/settings" type="settings" key="settings"  />,
     ];
 
     const modal = '';
@@ -41,7 +42,7 @@ const Builds = (props) => {
 };
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { settings: Settings }) => {
     return {
         title: state.settings.repo
     }

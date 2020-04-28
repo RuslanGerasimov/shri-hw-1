@@ -5,7 +5,7 @@ import Ansi from 'ansi-to-react';
 
 import "./Log.css";
 
-export default (props) => {
+const Log: React.FC<{children: string}> = (props) => {
     return (
         <div  className={cn('Log')()} >
             <Ansi>
@@ -14,3 +14,5 @@ export default (props) => {
         </div>
     )
 }
+
+export default Log;

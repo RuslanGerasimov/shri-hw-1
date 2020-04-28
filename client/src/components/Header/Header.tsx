@@ -9,8 +9,22 @@ import './Header-Button.css';
 import './Header-Title.css';
 import './Header-Title_logo.css';
 
+export enum titleTypes {
+    logo = 'logo',
+    text = 'text'
+}
 
-export default (props) => {
+export interface HeaderProps {
+    buttons: Array<React.ReactElement>,
+    mix?: string,
+    title: {
+        type: titleTypes,
+        link?: string,
+        text: string
+    }
+}
+
+const Header: React.FC<HeaderProps> = (props) => {
     const headerClass = cn('Header');
     const headerTitleClass = cn('Header', 'Title');
     const headerButtonsClass = cn('Header', 'Buttons');
@@ -37,4 +51,6 @@ export default (props) => {
             {headerButtons}
         </div>
     );
-}
+};
+
+export default Header;
