@@ -146,12 +146,14 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
                 requestIsProcessing: true
             });
 
-            props.saveSettings({
+            const settingsData: Settings = {
                 repo: props.repo,
                 command: props.command,
                 mainBranch: props.mainBranch,
                 interval: props.interval
-            }).then(() => {
+            };
+
+            props.saveSettings(settingsData).then(() => {
                 setFormState({
                     processed: true,
                     success: true,

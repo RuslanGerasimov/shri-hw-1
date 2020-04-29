@@ -1,7 +1,8 @@
 import { GET_SETTINGS, SET_SETTING, SETTINGS_API_GOING} from './actionTypes';
+import { SettingsState } from './type';
 
-const initialState = {
-    id: null,
+const initialState: SettingsState = {
+    id: '',
     repo: '',
     mainBranch: '',
     command: '',
@@ -9,7 +10,7 @@ const initialState = {
     processIsGoing: false
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state: SettingsState = initialState, { type, payload }: {type: string, payload: any}) => {
     if(type === GET_SETTINGS) {
         return {
             ...state,

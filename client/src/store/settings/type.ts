@@ -1,4 +1,5 @@
 export interface Settings {
+    id?: string,
     repo: string,
     mainBranch: string,
     command: string,

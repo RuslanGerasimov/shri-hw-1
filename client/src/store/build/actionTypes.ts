@@ -1,0 +1,1 @@
+export const SET_BUILD: string = 'SET_BUILD';

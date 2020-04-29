@@ -1,10 +1,11 @@
 import { SET_BUILDS } from './actionTypes';
+import {Build} from "./types";
 
-const initialState = {
+const initialState: {builds: Array<Build>} = {
     builds: []
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type, payload }: { type: string, payload: { builds: Array<Build> } }) => {
     if(type === SET_BUILDS) {
         return {
             ...state,

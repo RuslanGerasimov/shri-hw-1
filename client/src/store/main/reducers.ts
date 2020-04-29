@@ -1,10 +1,10 @@
 import { APP_INIT } from './actionTypes';
 
-const initialState = {
+const initialState: { appInitialized: boolean } = {
     appInitialized: false
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type }: { type: string }) => {
     if(type === APP_INIT) {
         return {
             ...state,

@@ -1,5 +1,13 @@
+export enum BuildStatues {
+    New = 'new',
+    Process = 'process',
+    Success = 'success',
+    Fail = 'fail',
+    Cancel = 'cancelled',
+}
+
 export interface Build {
-    status: Statuses,
+    status: BuildStatues,
     start: string,
     duration: number,
     buildNumber: number,
@@ -8,12 +16,4 @@ export interface Build {
     id: string,
     authorName: string,
     commitHash: string,
-}
-
-enum Statuses {
-    New = 'new',
-    Process = 'process',
-    Success = 'success',
-    Fail = 'fail',
-    Cancel = 'cancelled',
 }
