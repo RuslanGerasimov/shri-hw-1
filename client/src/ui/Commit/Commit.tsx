@@ -11,9 +11,22 @@ import "./Commit-DateTimeBox.css";
 import "./Commit-Item.css";
 import "./Commit-Item_author.css";
 import "./Commit-Item_title.css";
-import IconLabel from "../../ui/IconLabel/IconLabel";
+import IconLabel, {IconLabelTypes} from "../../ui/IconLabel/IconLabel";
 
-export default (props) => {
+export interface CommitProps {
+    clicked?: React.EventHandler<any>,
+    detail?: boolean,
+    type: any,
+    number: string|number,
+    description: string,
+    branch: string,
+    hex: string,
+    author: string,
+    date: string,
+    interval: string|number
+}
+
+const Commit: React.FC<CommitProps> = (props) => {
     const commitClass = cn('Commit');
     const commitContentClass = cn(commitClass(), 'Content');
     const commitContentRowClass = cn(commitClass(), 'ContentRow');
@@ -31,18 +44,20 @@ export default (props) => {
                 </div>
                 <div className={commitContentRowClass()}>
                     <div className={commitItemClass()}>
-                        <IconLabel type="branch">{props.branch}</IconLabel>
+                        <IconLabel type={IconLabelTypes.branch}>{props.branch}</IconLabel>
                         <div className={commitIdClass()}>{props.hex ? props.hex.substring(0, 5): null}</div>
                     </div>
-                    <IconLabel type="author" mix={commitItemClass({author: true})}>{props.author}</IconLabel>
+                    <IconLabel type={IconLabelTypes.author} mix={commitItemClass({author: true})}>{props.author}</IconLabel>
                 </div>
             </div>
             <div className={commitDateBoxClass()}>
-                <IconLabel type="date" mix={commitDateClass()}>{props.date}</IconLabel>
-                <IconLabel type="timeInterval" mix={commitDateClass({interval: true})}>
+                <IconLabel type={IconLabelTypes.date} mix={commitDateClass()}>{props.date}</IconLabel>
+                <IconLabel type={IconLabelTypes.timeInterval} mix={commitDateClass({interval: true})}>
                     {props.interval}
                 </IconLabel>
             </div>
         </div>
     );
-}
+};
+
+export default Commit;

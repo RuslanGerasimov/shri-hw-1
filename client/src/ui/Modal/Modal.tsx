@@ -3,7 +3,7 @@ import {cn} from "@bem-react/classname";
 
 import './Modal.css';
 
-export default (props) => {
+const Modal: React.FC<{ children: React.ReactNode }> = (props) => {
     const modalClass = cn('Modal');
 
     return (
@@ -11,4 +11,6 @@ export default (props) => {
             {props.children}
         </div>
     );
-}
+};
+
+export default Modal;

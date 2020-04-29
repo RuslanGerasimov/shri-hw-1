@@ -11,8 +11,15 @@ import Settings from "./containers/Settings/Settings";
 import Build from "./containers/Build/Build";
 import Builds from "./containers/Builds/Builds";
 import Initialization from "./containers/Start/Initialization";
+import {ThunkDispatch} from "redux-thunk";
 
-const App = (props) => {
+interface AppProps {
+    initApp: () => void,
+    initialized: boolean,
+    settingsExists: boolean
+}
+
+const App: React.FC<AppProps> = (props) => {
     useEffect(() => {
         props.initApp();
     });
@@ -36,7 +43,7 @@ const App = (props) => {
     );
 };
 
-const mapsDispatchToProps = (dispatch) => {
+const mapsDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => {
     return {
         initApp: () => {
             dispatch(actions.initApp())
@@ -44,10 +51,10 @@ const mapsDispatchToProps = (dispatch) => {
     }
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: {main: { appInitialized: boolean }, settings: { id?: string }}) => {
     return {
         initialized: state.main.appInitialized,
-        settingsExists: state.settings.id ? true : false
+        settingsExists: !!state.settings.id
     }
 };
 

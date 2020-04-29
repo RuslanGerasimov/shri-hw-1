@@ -6,7 +6,7 @@ import LayoutContent from "../../hoc/Layout/Layout-Content";
 import Page from "../Page/Page";
 import SettingsForm from "../../components/SettingsForm/SettingsForm";
 
-const Settings: React.FC<never> = () => {
+const Settings: React.FC = () => {
     const header = {
         logo: true,
         text: 'School CI Server',

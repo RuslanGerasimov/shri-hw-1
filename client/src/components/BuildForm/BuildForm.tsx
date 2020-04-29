@@ -6,7 +6,7 @@ import Form from "../../ui/Form/Form";
 import compulsory from "../../ui/Form/validators/compulsory";
 
 export interface BuildFormProps {
-    resetHandler?: object
+    resetHandler: React.FormEventHandler
 }
 
 const BuildForm: React.FC<BuildFormProps> = (props) => {
@@ -95,11 +95,11 @@ const BuildForm: React.FC<BuildFormProps> = (props) => {
         <Form valid={!formIsInValid}
               title="New build"
               result={formState.processed ?
-                  (formState.success ? "Билд поставлен в очередь" : "Ошибка при попытке поставить билд а очередь") : null}
+                  (formState.success ? "Билд поставлен в очередь" : "Ошибка при попытке поставить билд а очередь") : undefined}
               disableButtons={formState.requestIsProcessing}
               submitHandler={submitForm}
               resetHandler={props.resetHandler}
-              sumbitText="Run Build"
+              submitText="Run Build"
               fields={inputs}/>
     )
 };

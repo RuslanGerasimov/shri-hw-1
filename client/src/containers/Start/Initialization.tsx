@@ -6,7 +6,7 @@ import LayoutContent from "../../hoc/Layout/Layout-Content";
 import ActionCard from "../../ui/ActionCard/ActionCard";
 import Page from "../Page/Page";
 
-const Initialization: React.FC<never> = () => {
+const Initialization: React.FC = () => {
     const header = {
         logo: true,
         text: 'School CI Server',

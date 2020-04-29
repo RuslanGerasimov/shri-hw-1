@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import {cn} from "@bem-react/classname";
 
 import './Form.css';
@@ -10,10 +10,23 @@ import './Form-Footer.css';
 import './Form-Header.css';
 import './Form-HeaderItem.css';
 import './Form-HeaderItem_title.css';
-import Button from "../Button/Button";
+import Button, {buttonTypes} from "../Button/Button";
 import InputField from "../InputField/InputField";
+import {Input, InputWithValueChanged} from "../../components/SettingsForm/SettingsForm";
 
-export default (props) => {
+export interface FormProps {
+    submitHandler: React.FormEventHandler,
+    resetHandler: React.FormEventHandler,
+    title: string,
+    description?: string,
+    result?: string,
+    fields: Array<InputWithValueChanged>,
+    disableButtons: boolean,
+    valid: boolean,
+    submitText?: string
+}
+
+const Form: React.FC<FormProps> = (props) => {
     const FormBlockClass = cn('Form')();
     const FormHeaderClass = cn(FormBlockClass, 'Header')();
     const FormHeaderItemClass = cn(FormBlockClass, 'HeaderItem');
@@ -35,20 +48,22 @@ export default (props) => {
 
                     return (
                         <div key={input.id} className={formFieldClass(mod)}>
-                            <InputField valueChanged={input.setValue} {...input}/>
+                            <InputField valueChanged={input.valueChanged} {...input}/>
                         </div>
                     )
                 })}
             </div>
             <div className={FormFooterClass}>
-                <Button disabled={!props.valid || props.disableButtons} role="submit"
+                <Button disabled={!props.valid || props.disableButtons} role={buttonTypes.submit}
                         responsive
                         large
                         primary
                         text={props.submitText ? props.submitText : 'Save'}
                         mix={cn(FormBlockClass, 'Button')()}/>
-                <Button disabled={props.disableButtons} role="reset" responsive large text="Cancel" mix={cn(FormBlockClass, 'Button')()}/>
+                <Button disabled={props.disableButtons} role={buttonTypes.reset} responsive large text="Cancel" mix={cn(FormBlockClass, 'Button')()}/>
             </div>
         </form>
     );
-}
+};
+
+export default Form;

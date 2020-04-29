@@ -34,6 +34,10 @@ export interface Input {
     valueChanged?: (val: string) => void
 }
 
+export interface InputWithValueChanged extends Input{
+    valueChanged: (val: string) => void
+}
+
 type Validator = (val: string) => boolean;
 
 const SettingsForm: React.FC<SettingsFormProps> = (props) => {
@@ -102,7 +106,7 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
 
     const history = useHistory();
 
-    const changeValue: (input: Input) => Input = (input: Input) => {
+    const changeValue: (input: Input) => InputWithValueChanged = (input: Input) => {
         return {
             ...input,
             valueChanged: (value: string) => {
@@ -178,7 +182,7 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
     return (
         <Form valid={!formIsInValid} title="Settings"
               result={formState.processed ?
-                  (formState.success ? "Репозитроий клонирован успешно" : "Ошибка при клонировании репозитория") : null}
+                  (formState.success ? "Репозитроий клонирован успешно" : "Ошибка при клонировании репозитория") : undefined}
               disableButtons={props.processIsGoing}
               submitHandler={submitForm}
               resetHandler={resetForm}

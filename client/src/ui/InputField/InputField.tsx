@@ -10,10 +10,11 @@ import './InputField-ClearIcon.css';
 import './InputField-InputBox.css';
 import './InputField-InputBox_clearIcon.css';
 import './InputField-Label.css';
+import {InputWithValueChanged} from "../../components/SettingsForm/SettingsForm";
 
-export default (props) => {
+const InputField: React.FC<InputWithValueChanged> = (props) => {
     const value = props.value ? props.value : '';
-    const valueChanged = (value) => {
+    const valueChanged = (value: string) => {
         props.valueChanged(value);
     };
 
@@ -40,4 +41,6 @@ export default (props) => {
             {props.unit ? <div className={cn(inputFieldClass(), 'Unit')()}>{props.unit}</div> : null}
         </div>
     );
-}
+};
+
+export default InputField;

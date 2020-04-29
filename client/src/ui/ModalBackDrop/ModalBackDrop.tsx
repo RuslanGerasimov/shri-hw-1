@@ -2,7 +2,7 @@ import React, {Fragment} from "react";
 import BackDrop from "../BackDrop/BackDrop";
 import Modal from "../Modal/Modal";
 
-export default (props) => {
+const ModalBackDrop: React.FC<{ show?: boolean, backDropClicked: React.EffectCallback }> = (props) => {
     return props.show ? (
         <Fragment>
             <BackDrop clicked={props.backDropClicked} />
@@ -11,4 +11,6 @@ export default (props) => {
             </Modal>
         </Fragment>
     ) : null;
-}
+};
+
+export default ModalBackDrop;
