@@ -1,9 +1,9 @@
-const {Router} = require('express');
-const router = Router();
-const { addNewCommitsToBuildQue, checkRepository } = require("../../../backend/api/builds");
-const { getSettings, saveSettings } = require("../../../backend/api/settings");
+import {Router} from "express";
+import {cloneRepository} from "../../../backend/main/git";
+import {getSettings, saveSettings, Settings} from "../../../backend/api/settings";
+import {addNewCommitsToBuildQue, checkRepository} from "../../../backend/api/builds";
 
-const { cloneRepository } = require('../../../backend/main/git');
+const router = Router();
 
 router.get('/settings', function (req, res) {
     getSettings()
@@ -11,7 +11,7 @@ router.get('/settings', function (req, res) {
         .catch((err) => { res.status(400).json(err) })
 });
 
-router.post('/settings', (req, res) => {
+router.post('/settings', (req: {body: Settings}, res) => {
     const {repoName, buildCommand, mainBranch, period} = req.body;
     saveSettings(repoName, buildCommand, mainBranch, period)
         .then(() => cloneRepository(req.body.repoName))
@@ -29,4 +29,4 @@ router.post('/settings', (req, res) => {
         })
 });
 
-module.exports = router;
+export default router;

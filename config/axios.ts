@@ -1,7 +1,7 @@
-const axios = require('axios');
-const https = require('https');
+import axios, { AxiosInstance} from "axios";
+import https from "https";
 
-const instance = axios.create({
+const instance: AxiosInstance = axios.create({
     baseURL: 'https://hw.shri.yandex/api/',
     headers: {
         common: {
@@ -14,4 +14,4 @@ const instance = axios.create({
     })
 });
 
-module.exports = instance;
+export default instance;

@@ -1,17 +1,18 @@
+import ErrnoException = NodeJS.ErrnoException;
+
 const rimraf = require('rimraf');
 const fs = require('fs');
 
-const deleteDir = (folder) => new Promise((resolve, reject) => {
+export const deleteDir: (f: string) => Promise<boolean> = (folder) => new Promise((resolve, reject) => {
     rimraf(folder, function () {
-        console.log(...arguments);
         resolve(true)
     });
 });
 
-const checkIfDirExists = (dir) => new Promise((resolve, reject) => {
-    fs.access(dir, function (err) {
+export const checkIfDirExists: (dir: string) => Promise<boolean> = (dir) => new Promise((resolve, reject) => {
+    fs.access(dir, function (err: ErrnoException) {
         if (err && err.code === 'ENOENT') {
-            fs.mkdir(dir, function (err) {
+            fs.mkdir(dir, function (err: ErrnoException) {
                 if (err) {
                     reject(err)
                 } else {
@@ -23,8 +24,3 @@ const checkIfDirExists = (dir) => new Promise((resolve, reject) => {
         }
     });
 });
-
-module.exports = {
-    deleteDir,
-    checkIfDirExists
-};

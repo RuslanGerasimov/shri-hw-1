@@ -4,7 +4,8 @@
   "description": "1) `Button` - все кнопки на страницах и в формах.\r 2) `Header` и `Footer` - как части шаблона\r 3) `Card` - карточка, коммита, в том числе детальная\r 4) `IconLabel` - Внурти карточки есть несколько иконок с подпись (ветка, автор, номер, дата, временной интервал)\r 5) `Input` - блок поля ввода, в том числе инлайновый <br />\r Остальные блоки представлены в единичном экземпляре",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "start": "ts-node index.ts --files"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/RuslanGerasimov/shri-hw-1#readme",
   "dependencies": {
+    "@types/node": "^13.13.4",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
@@ -26,5 +28,12 @@
     "hermione": "^3.1.0",
     "mocha": "^7.1.1",
     "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.6",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.9.1",
+    "typescript": "^3.8.3"
   }
 }

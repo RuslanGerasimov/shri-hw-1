@@ -1,30 +1,58 @@
-const axiosApiInstance = require('../../config/axios');
-const {gitLog, gitPull} = require("../main/git");
-const {getSettings} = require('./settings');
+import axiosApiInstance from "../../config/axios";
+import {gitLog, gitPull} from "../main/git";
+import {getSettings} from "./settings";
+import {AxiosError} from "axios";
 
-const fetchBuilds = (limit = null, offset = null) => {
+export enum BuildStatuses {
+    Waiting = 'Waiting',
+    InProgress = 'InProgress',
+    Success = 'Success',
+    Fail = 'Fail',
+    Canceled = 'Canceled'
+}
+
+export type Build = {
+    id:	string,
+    buildNumber: number,
+    status:	BuildStatuses,
+    configurationId: string,
+    commitMessage:	string,
+    commitHash:	string,
+    branchName:	string,
+    authorName:	string,
+    start?: string,
+    duration?: number
+}
+
+export type BuildRequest = {
+    id:	string,
+    buildNumber: number,
+    status:	BuildStatuses
+}
+
+export const fetchBuilds = (limit: number|undefined = undefined , offset: number|undefined = undefined): Promise<Array<Build>> => {
     return new Promise((resolve, reject) => {
-        const query = limit || offset ? `?limit=${+limit}&offset=${+offset}` : "";
+        const query = limit && offset ? `?limit=${+limit}&offset=${+offset}` : "";
 
         axiosApiInstance.get('/build/list' + query).then((result) => {
             resolve(result.data.data);
         }).catch((err) => {
-            reject(err.response);
+            reject(err);
         });
     })
 };
 
-const fetchDetailBuild = (buildId) => {
+export const fetchDetailBuild = (buildId: string): Promise<Build> => {
     return new Promise((resolve, reject) => {
         axiosApiInstance.get('/build/details?buildId=' + buildId).then((result) => {
             resolve(result.data.data);
         }).catch((err) => {
-            reject(err.response)
+            reject(err)
         })
     })
 };
 
-const addBuild = (commit, author, branchName, message) => {
+export const addBuild = (commit: string, author: string, branchName: string, message: string): Promise<BuildRequest> => {
     return new Promise((resolve, reject) => {
         axiosApiInstance.post("/build/request", {
             commitMessage: message,
@@ -32,7 +60,7 @@ const addBuild = (commit, author, branchName, message) => {
             branchName: branchName,
             authorName: author
         }).then((result) => {
-            resolve(result.data.data.id);
+            resolve(result.data.data);
         }).catch((err) => {
             reject(err.response);
         })
@@ -41,8 +69,8 @@ const addBuild = (commit, author, branchName, message) => {
 
 
 //По какой-то причине сервер периодически выдает 500 ошибку при постановки билда в очередь.
-const recursiveAddBuilder = (commit, author, branchName, message, resolve, reject) => {
-    addBuild(commit, author, branchName, message).then((data) => {
+export const recursiveAddBuilder = (commit: string, author: string, branchName: string, message: string, resolve: (data: any) => void, reject: (data: any) => any): void => {
+    addBuild(commit, author, branchName, message).then((data: BuildRequest) => {
         resolve(data);
     }).catch((errResponse) => {
         if (errResponse.status === 500) {
@@ -56,16 +84,15 @@ const recursiveAddBuilder = (commit, author, branchName, message, resolve, rejec
 };
 
 
-const addNewCommitsToBuildQue = (branch = null, repoName = null) => {
+export const addNewCommitsToBuildQue = (branch: string = '', repoName: string = ''): Promise<{status: 'ok', period: number}> => {
     return new Promise(async (resolve, reject) => {
-        const config = {
+        const config: {branch: string, repoName: string, period?: number} = {
             branch: branch,
             repoName: repoName,
         };
 
         if (!branch || !repoName) {
-            const configData = await getSettings()
-                .catch(err => err);
+            const configData = await getSettings().catch(err => err);
 
             config.branch = configData.mainBranch;
             config.repoName = configData.repoName;
@@ -84,13 +111,11 @@ const addNewCommitsToBuildQue = (branch = null, repoName = null) => {
                         }, false);
                         if (!hasBeenAdded) {
                             await (new Promise((resolve, reject) => {
-                                recursiveAddBuilder(commit.commit, commit.author, currentBranch, message, resolve, reject)
-                                    .then(() => { console.log("ok") })
-                                    .catch((err) => { console.log(err) });
+                                recursiveAddBuilder(commit.commit, commit.author, currentBranch, message, resolve, reject);
                             })).then(data => data).catch(err => err);
                         }
                     });
-                    resolve({status: "ok", period: config.period});
+                    resolve({status: "ok", period: config.period ? +config.period : 0});
                 })
             })
             .catch((err) => {
@@ -101,11 +126,11 @@ const addNewCommitsToBuildQue = (branch = null, repoName = null) => {
 };
 
 
-const timerObject = {
+const timerObject: { timerId: NodeJS.Timeout|null } = {
     timerId: null
 };
 
-const checkRepository = () => {
+export const checkRepository: () => void = () => {
     getSettings()
         .then((data) => {
             return {
@@ -124,7 +149,7 @@ const checkRepository = () => {
                     timerObject.timerId = null;
                 }
                 timerObject.timerId = setTimeout(() => {
-                    checkRepository(timerObject)
+                    checkRepository()
                 }, settings.period * 60 * 1000)
             }).catch(err => {
                 console.log(err);
@@ -134,17 +159,17 @@ const checkRepository = () => {
             console.log(err);
         })
 };
-const getBuildLog = (buildId) => {
+export const getBuildLog = (buildId: string): Promise<Build> => {
     return new Promise((resolve, reject) => {
         axiosApiInstance.get(`/build/log?buildId=${buildId}`).then((result) => {
             resolve(result.data);
         }).catch((err) => {
-            reject(err.response);
+            reject(err);
         })
     });
 };
 
-const startBuilding = (buildId) => {
+export const startBuilding = (buildId: string): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         const date = new Date();
         axiosApiInstance.post('/build/start', { buildId: buildId, dateTime: date.toISOString() }).then(() => {
@@ -155,7 +180,7 @@ const startBuilding = (buildId) => {
     })
 };
 
-const cancelBuilding = (buildId) => {
+export const cancelBuilding = (buildId: string): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         axiosApiInstance.post('/build/cancel', { buildId: buildId }).then(() => {
             resolve(true);
@@ -165,7 +190,7 @@ const cancelBuilding = (buildId) => {
     })
 };
 
-const finishBuilding = (buildId, duration, isSuccess, buildLog) => {
+export const finishBuilding = (buildId: string, duration: number, isSuccess: boolean, buildLog: string): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         const data = {
             buildId: buildId,
@@ -180,18 +205,4 @@ const finishBuilding = (buildId, duration, isSuccess, buildLog) => {
             reject(err.response)
         })
     })
-};
-
-
-module.exports = {
-    getBuildLog,
-    fetchBuilds,
-    addBuild,
-    recursiveAddBuilder,
-    addNewCommitsToBuildQue,
-    checkRepository,
-    fetchDetailBuild,
-    startBuilding,
-    finishBuilding,
-    cancelBuilding
 };

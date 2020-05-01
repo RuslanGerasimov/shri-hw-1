@@ -1,12 +1,21 @@
-const path = require('path');
-const {spawn} = require('child_process');
-const {StringDecoder} = require('string_decoder');
-const { deleteDir, checkIfDirExists } = require('../../helpers/fs');
+import path from "path";
+import {spawn} from "child_process";
+import {StringDecoder} from "string_decoder";
+import {checkIfDirExists, deleteDir} from "../../helpers/fs";
 
 const repositoriesDir = path.resolve(__dirname, '..', 'repositories');
-const getRepositoryFolder = (repositoryName, repositoryFolder = repositoriesDir) => path.resolve(repositoryFolder, repositoryName);
+const getRepositoryFolder = (repositoryName: string, repositoryFolder: string = repositoriesDir): string => path.resolve(repositoryFolder, repositoryName);
 
-const cloneRepository = (repositoryName, repositoryFolder = null) => {
+export type infoType = 'author' | 'body' | 'dateTime' | 'commitHash' | 'branch';
+export type Commit = {
+    commit: string,
+    subject: string,
+    author: string,
+    date: string,
+    body: string,
+}
+
+const cloneRepository = (repositoryName: string, repositoryFolder: string = '') => {
     return new Promise((resolve, reject) => {
         repositoryFolder = !repositoryFolder ? getRepositoryFolder(repositoryName) : repositoryFolder;
 
@@ -36,13 +45,14 @@ const cloneRepository = (repositoryName, repositoryFolder = null) => {
     })
 };
 
-const getCommitParam = (repoName, commitHash, type, repoDir = repositoriesDir) => {
+const getCommitParam = (repoName: string, commitHash: string, type: infoType, repoDir: string = repositoriesDir): Promise<{ type: infoType, value: string }> => {
     return new Promise((resolve, reject) => {
         const params = {
             body: '%B',
             author: '%aN',
             dateTime: '%cI',
-            commitHash: '%H'
+            commitHash: '%H',
+            branch: '%B'
         };
         let output = "";
 
@@ -56,7 +66,7 @@ const getCommitParam = (repoName, commitHash, type, repoDir = repositoriesDir) =
         });
 
         childProcess.on('error', function (err) {
-            reject(...arguments);
+            reject(err);
         });
 
         childProcess.on('exit', function (code, message) {
@@ -71,17 +81,19 @@ const getCommitParam = (repoName, commitHash, type, repoDir = repositoriesDir) =
     })
 };
 
-const getCommitBranch = (repoName, commitHash, repoDir = repositoriesDir) => {
+const getCommitBranch = (repoName: string, commitHash: string, repoDir: string = repositoriesDir): Promise<{type: infoType, value: string}> => {
     return new Promise((resolve, reject) => {
         const childProcess = spawn('git', ['branch', '--contains', commitHash, '-r'], {
             "cwd": getRepositoryFolder(repoName, repoDir)
         });
         childProcess.stdout.on('data', (buffer) => {
             const decoder = new StringDecoder('utf8');
-            let data = decoder.write(buffer);
-            data = data.trim().split("\n");
+
+            const data = decoder.write(buffer).trim().split("\n");
             let firstBranch = data.shift();
-            resolve({type: "branch", value: firstBranch.split(' ').pop().trim()});
+            const branches = firstBranch ? firstBranch.split(' ') : [];
+            const branchLast =  branches.pop();
+            resolve({type: "branch", value: branchLast ? branchLast.trim() : ''});
         });
         childProcess.stderr.on('data', (buffer) => {
             const decoder = new StringDecoder('utf8');
@@ -92,13 +104,14 @@ const getCommitBranch = (repoName, commitHash, repoDir = repositoriesDir) => {
 };
 
 
-const getIndividualLog = (commitHash, repoName, repoDir = repositoriesDir) => {
+type Log = {author: string, commitMessage: string, repoName: string, commit: string, branchName: string};
+const getIndividualLog = (commitHash: string, repoName: string, repoDir: string = repositoriesDir): Promise<Log> => {
     return new Promise((resolve, reject) => {
         Promise.all([
             getCommitParam(repoName, commitHash, 'body', repoDir),
             getCommitParam(repoName, commitHash, 'author', repoDir),
             getCommitBranch(repoName, commitHash, repoDir)
-        ]).then((promiseResults) => {
+        ]).then((promiseResults: Array<{type: infoType, value: string}>) => {
             const commitMessage = promiseResults.filter(result => result.type === 'body')[0].value;
             const author = promiseResults.filter(result => result.type === 'author')[0].value;
             const branch = promiseResults.filter(result => result.type === 'branch')[0].value;
@@ -110,24 +123,24 @@ const getIndividualLog = (commitHash, repoName, repoDir = repositoriesDir) => {
     });
 };
 
-const gitLog = (repositoryName, branchName, repoDir = repositoriesDir) => {
+const gitLog = (repositoryName: string, branchName: string, repoDir = repositoriesDir): Promise<Array<Commit>> => {
     return new Promise((resolve, reject) => {
         const origin = branchName.indexOf('origin') === 0 ? branchName : 'origin/' + branchName;
         const childProcess = spawn('git', ['log', origin, '--pretty=%H%n%s%n%aN%n%cI%n%b', '--reverse'], {
             "cwd": getRepositoryFolder(repositoryName, repoDir)
         });
         const decoder = new StringDecoder('utf8');
-        const arData = [];
+        const arData: Array<Commit> = [];
         childProcess.stdout.on('data', function (data) {
             const commits = decoder.write(data);
             let counter = 0;
-            const commitsParsed = commits.split("\n").reduce((res, line) => {
+            const commitsParsed = commits.split("\n").reduce((res:Array<Commit>, line) => {
                 switch (counter) {
                     case 0:
                         if (!line) {
                             return res
                         }
-                        res.push({});
+                        res.push({author: "", body: "", commit: "", date: "", subject: ""});
                         res[res.length - 1]['commit'] = line;
                         break;
                     case 1:
@@ -171,7 +184,7 @@ const gitLog = (repositoryName, branchName, repoDir = repositoriesDir) => {
     })
 };
 
-const gitPull = (repositoryName, repoDir = repositoriesDir) => {
+const gitPull = (repositoryName: string, repoDir: string = repositoriesDir): Promise<boolean> => {
     return new Promise((resolve, reject) => {
         const childProcess = spawn('git', ['pull'], {
             "cwd": getRepositoryFolder(repositoryName, repoDir)
@@ -189,4 +202,4 @@ const gitPull = (repositoryName, repoDir = repositoriesDir) => {
     });
 };
 
-module.exports = {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch, getRepositoryFolder, getCommitParam};
+export {cloneRepository, gitLog, gitPull, getIndividualLog, getCommitBranch, getRepositoryFolder, getCommitParam};
