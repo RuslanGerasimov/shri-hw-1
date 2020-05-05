@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import {cn} from "@bem-react/classname";
 
 import Theme from "../../hoc/Theme/Theme";
@@ -12,13 +12,14 @@ export interface PageProps {
     header: {
         logo: boolean,
         text: string,
-        link: string
+        link: string,
+        buttons: Array<ReactElement>
     }
 }
 
 const Page: React.FC<PageProps> = (props) => {
     const headerProps: HeaderProps = {
-        buttons: [],
+        buttons: props.header.buttons,
         mix: cn('Layout', 'Header')(),
         title: {
             type: props.header.logo ? titleTypes.logo : titleTypes.text,
@@ -30,7 +31,7 @@ const Page: React.FC<PageProps> = (props) => {
     return (
         <Theme default>
             <Layout>
-                <Header title={headerProps.title} mix={headerProps.mix} buttons={[]} />
+                <Header title={headerProps.title} mix={headerProps.mix} buttons={headerProps.buttons} />
                 <LayoutWrapper>
                     {props.children}
                 </LayoutWrapper>

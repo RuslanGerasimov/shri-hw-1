@@ -19,12 +19,17 @@
     --icon_image-path: var(--icon-success);
 }
 
-.IconLabel_type_error {
+.IconLabel_type_error, .IconLabel_type_fail {
     --icon_image-path: var(--icon-error);
     --icon_label-font-color: var(--error-red);
 }
 
-.IconLabel_type_waiting {
+.IconLabel_type_waiting, .IconLabel_type_inprogress {
     --icon_image-path: var(--icon-waiting);
     --icon_label-font-color: var(--waiting-orange);
+}
+
+.IconLabel_type_cancelled {
+    --icon_image-path: var(--icon-waiting);
+    --icon_label-font-color: var(--waiting-gray);
 }

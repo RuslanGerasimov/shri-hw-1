@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import path from "path";
 import {config} from "dotenv";
+config();
 
 import apiSettingsRoute from "./config/routes/api/settings";
 import apiBuildsRoute from "./config/routes/api/builds";
@@ -10,7 +11,6 @@ import testRoute from "./config/routes/test-api";
 import {checkRepository} from "./backend/api/builds";
 
 
-config();
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({

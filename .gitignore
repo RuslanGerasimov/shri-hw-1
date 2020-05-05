@@ -6,3 +6,12 @@ node_modules
 backend/repositories
 repositories/*
 test/backend/main/repositories/*
+/client/src/ui/*/*.js
+/client/src/store/*/*.js
+/client/src/hoc/*/*.js
+/client/src/services/*.js
+/client/src/containers/*/*.js
+/client/src/components/*/*.js
+/client/src/App.js
+backend/api/*.js
+backend/main/*.js

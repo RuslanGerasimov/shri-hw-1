@@ -17,6 +17,7 @@
     --error-red: #FF3333;
     --success-green: #00B341;
     --waiting-orange: #FF9A00;
+    --waiting-gray: var(--blue-gray-600);
     --black: #000000;
     --gray-opacity: rgba(67, 68, 69, 0.3);
 
