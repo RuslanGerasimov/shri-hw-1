@@ -19,6 +19,7 @@ app.use(cors({
 }));
 
 app.use('/static', express.static('public/build/static'));
+app.use('/sw.js', express.static('public/build/sw.js'));
 app.use('/api', apiSettingsRoute, apiBuildsRoute);
 app.use('/test-api', testRoute);
 app.use('*', (req, res) => {
