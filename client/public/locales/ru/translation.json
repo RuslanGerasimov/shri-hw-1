@@ -1,45 +1,45 @@
 {
   "buttons": {
-    "settings": "Настройки",
     "openSettings": "Настроить",
+    "rebuild": "Собрать заново",
     "runBuild": "Запустить сборку",
-    "rebuild": "Собрать заново"
+    "settings": "Настройки"
   },
-  "appTitle": "Учебный CI Server",
+  "footer": {
+    "copyright": "© 2020 Герасимов Руслан",
+    "links": {
+      "lang": "English version",
+      "learning": "Обучение",
+      "support": "Поддержка"
+    }
+  },
   "init": {
     "description": {
       "firstRow": "Настройте подключение к репозиторию",
       "secondRow": "и параметры синхронизации"
     }
   },
-  "footer": {
-    "copyright": "© 2020 Герасимов Руслан",
-    "links": {
-      "support": "Поддержка",
-      "learning": "Обучение",
-      "lang": "English version"
-    }
-  },
+  "interval": "{{hours}} ч {{minutes}} мин",
   "settings": {
     "form": {
-      "title": "Настройки",
-      "description": "Укажите репозиторий и параметры синхронизации.",
-      "messages": {
-        "success": "Репозиторий клонирован успешно",
-        "error": "Ошибка при клонировании репозитория"
-      },
-      "repo": "GitHub репозиторий",
-      "repoPlaceholder": "user-name/repo-name",
-      "command": "Команда сборки",
-      "commandPlaceholder": "npm i && npm run build",
       "branch": "Основная ветка",
       "branchPlaceholder": "master",
+      "command": "Команда сборки",
+      "commandPlaceholder": "npm i && npm run build",
+      "description": "Укажите репозиторий и параметры синхронизации.",
+      "messages": {
+        "error": "Ошибка при клонировании репозитория",
+        "success": "Репозиторий клонирован успешно"
+      },
       "period": "Синхронизировать каждые",
       "periodPlaceholder": "10",
       "periodUnits_0": "минута",
       "periodUnits_1": "минуты",
-      "periodUnits_2": "минут"
+      "periodUnits_2": "минут",
+      "repo": "GitHub репозиторий",
+      "repoPlaceholder": "user-name/repo-name",
+      "title": "Настройки"
     }
   },
-  "interval": "{{hours}} ч {{minutes}} мин"
+  "appTitle": "Учебный CI Сервер"
 }
