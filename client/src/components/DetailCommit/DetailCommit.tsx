@@ -5,6 +5,7 @@ import Commit from "../../ui/Commit/Commit";
 import {formatDate, formatDuration} from "../../services/formatter";
 import {ThunkDispatch} from "redux-thunk";
 import {Build} from "../../store/builds/types";
+import {useTranslation} from "react-i18next";
 
 
 export interface DetailCommitProps extends Build{
@@ -12,14 +13,15 @@ export interface DetailCommitProps extends Build{
 }
 
 const DetailCommit: React.FC<DetailCommitProps> = (props) => {
+    const {t, i18n} = useTranslation();
     useEffect(() => {
         props.fetchBuild(props.id);
     }, [ props.id ]);
 
     const commitType = props.status ? props.status.toLowerCase() : null;
-    const formattedDate = formatDate(props.start);
-    const duration = formatDuration(props.duration);
-
+    const formattedDate = formatDate(props.start, i18n.language);
+    const duration = formatDuration(props.duration, i18n.language);
+    const interval: string = duration ? t('interval', { hours: duration.hours, minutes: duration.minutes }) : '-';
 
     return commitType ? (<Commit
         detail
@@ -30,7 +32,7 @@ const DetailCommit: React.FC<DetailCommitProps> = (props) => {
         author={props.authorName}
         type={commitType}
         date={formattedDate ? formattedDate : '-'}
-        interval={duration ? duration : '-'} />) : null;
+        interval={interval} />) : null;
 };
 
 const mapsDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => {

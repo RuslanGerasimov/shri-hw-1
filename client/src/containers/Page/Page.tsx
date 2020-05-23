@@ -1,5 +1,6 @@
 import React, {ReactElement} from "react";
 import {cn} from "@bem-react/classname";
+import {useTranslation} from "react-i18next";
 
 import Theme from "../../hoc/Theme/Theme";
 import Layout from "../../hoc/Layout/Layout";
@@ -18,6 +19,7 @@ export interface PageProps {
 }
 
 const Page: React.FC<PageProps> = (props) => {
+    const {t, i18n} = useTranslation();
     const headerProps: HeaderProps = {
         buttons: props.header.buttons,
         mix: cn('Layout', 'Header')(),
@@ -36,8 +38,12 @@ const Page: React.FC<PageProps> = (props) => {
                     {props.children}
                 </LayoutWrapper>
                 <LayoutFooter>
-                    <Footer copyright={"© 2020 Your Name"}
-                            links={[{id: 'Support', text: 'Support'}, {id: "Learning", text: 'Learning'}]}/>
+                    <Footer copyright={t('footer.copyright')}
+                            links={[
+                                {id: 'Support', text: t('footer.links.support')},
+                                {id: "Learning", text: t('footer.links.learning')},
+                                {id: "Lang", text: t('footer.links.lang'), onClick: () => { i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru') }},
+                            ]}/>
                 </LayoutFooter>
             </Layout>
         </Theme>

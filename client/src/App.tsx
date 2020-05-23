@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Suspense, useEffect} from 'react';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 
@@ -28,16 +28,17 @@ const App: React.FC<AppProps> = (props) => {
         <BrowserRouter>
             <Switch>
                 {props.initialized ? (
-                    <Fragment>
+                    <Suspense fallback="loading...">
                         <Route path="/settings" component={Settings}/>
                         <Route path="/build/:id" component={Build}/>
                         <Route path="/logs" component={Builds}/>
                         <Route exact path="/" component={props.settingsExists ? Builds : Start}/>
-                    </Fragment>
+                    </Suspense>
                 ) : (
-                    <Initialization/>
+                    <Suspense fallback="loading...">
+                        <Initialization/>
+                    </Suspense>
                 )}
-
             </Switch>
         </BrowserRouter>
     );

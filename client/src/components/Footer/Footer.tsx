@@ -11,7 +11,7 @@ import './Footer-Links_copyright.css';
 
 export interface FooterProps {
     mix?: string,
-    links: Array<{id: string|number, text: string}>,
+    links: Array<{id: string|number, text: string, onClick?: () => void}>,
     copyright?: string
 }
 
@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = (props) => {
             <div className={footerContentClass()}>
                 <div className={footerLinksClass()}>
                     { props.links && Array.isArray(props.links) ?
-                        props.links.map((item, index) => <div key={item.id ? item.id : index} className={footerItemClass()}>{item.text}</div>)
+                        props.links.map((item, index) => <div onClick={item.onClick ? item.onClick : () => {}} key={item.id ? item.id : index} className={footerItemClass()}>{item.text}</div>)
                         : null }
                 </div>
                 <div className={footerCopyrightLinksClass}>

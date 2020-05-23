@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ReactText} from "react";
 import {cn} from "@bem-react/classname";
 
 import "./Commit.css";

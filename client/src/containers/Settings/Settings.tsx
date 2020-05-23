@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import '../../style.css';
 import '../../vars.css';
 
@@ -7,9 +8,10 @@ import Page from "../Page/Page";
 import SettingsForm from "../../components/SettingsForm/SettingsForm";
 
 const Settings: React.FC = () => {
+    const {t} = useTranslation();
     const header = {
         logo: true,
-        text: 'School CI Server',
+        text: t('appTitle'),
         link: '/',
         buttons: []
     };

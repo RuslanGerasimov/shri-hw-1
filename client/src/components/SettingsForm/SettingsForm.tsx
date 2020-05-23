@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { connect } from 'react-redux';
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import * as actions from '../../store/settings/actions';
 
@@ -41,12 +42,13 @@ export interface InputWithValueChanged extends Input{
 type Validator = (val: string) => boolean;
 
 const SettingsForm: React.FC<SettingsFormProps> = (props) => {
+    const {t, i18n} = useTranslation();
     const [formState, setFormState] = useState({ requestIsProcessing: false, success: false, processed: false });
 
     const inputInitial = [
         {
-            label: "GitHub repository",
-            placeholder: "user-name/repo-name",
+            label: t('settings.form.repo'),
+            placeholder: t('settings.form.repoPlaceholder'),
             showClear: true,
             compulsory: true,
             type: 'text',
@@ -58,8 +60,8 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
             ]
         },
         {
-            label: "Build command",
-            placeholder: "enter command to run",
+            label: t('settings.form.command'),
+            placeholder: t('settings.form.commandPlaceholder'),
             value: props.command,
             showClear: true,
             compulsory: true,
@@ -71,8 +73,8 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
             ]
         },
         {
-            label: "Main branch",
-            placeholder: "master",
+            label: t('settings.form.branch'),
+            placeholder: t('settings.form.branchPlaceholder'),
             value: props.mainBranch,
             showClear: true,
             compulsory: false,
@@ -81,14 +83,14 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
             error: useState(false)
         },
         {
-            label: "Synchronize every",
-            placeholder: "10",
+            label: t('settings.form.period'),
+            placeholder: t('settings.form.periodPlaceholder'),
             value: props.interval,
             showClear: false,
             compulsory: false,
             type: 'text',
             inline: true,
-            unit: 'minutes',
+            unit: i18n.t('settings.form.periodUnits', {count: +props.interval}),
             topSpace: true,
             id: 'interval',
             error: useState(false),
@@ -182,13 +184,13 @@ const SettingsForm: React.FC<SettingsFormProps> = (props) => {
     };
 
     return (
-        <Form valid={!formIsInValid} title="Settings"
+        <Form valid={!formIsInValid} title={t('settings.form.title')}
               result={formState.processed ?
-                  (formState.success ? "Репозитроий клонирован успешно" : "Ошибка при клонировании репозитория") : undefined}
+                  (formState.success ? t('settings.form.messages.success') : t('settings.form.messages.error')) : undefined}
               disableButtons={props.processIsGoing}
               submitHandler={submitForm}
               resetHandler={resetForm}
-              description="Configure repository connection and synchronization settings."
+              description={t('settings.form.description')}
               fields={inputs}/>
     )
 };

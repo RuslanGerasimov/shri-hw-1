@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 import '../../style.css';
 import '../../vars.css';
 
@@ -33,6 +34,7 @@ export interface BuildProps {
 }
 
 const Build: React.FC<BuildProps> = (props) => {
+    const {t} = useTranslation();
     const [rebuildDisabled, setRebuildDisabled] = useState(!props.commitHash);
 
     useEffect(() => {
@@ -56,7 +58,7 @@ const Build: React.FC<BuildProps> = (props) => {
 
 
     const buttons = [
-        <Button disabled={rebuildDisabled} role={buttonTypes.button} text="Rebuild" clicked={rebuild} key="rebuild" type="rebuild"/>,
+        <Button disabled={rebuildDisabled} role={buttonTypes.button} text={t('buttons.rebuild')} clicked={rebuild} key="rebuild" type="rebuild"/>,
         <Button type="settings" link="/settings" role={buttonTypes.button} key="settings"  disabled={false} />,
     ];
 

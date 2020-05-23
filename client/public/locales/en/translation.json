@@ -1,0 +1,44 @@
+{
+  "buttons": {
+    "settings": "Settings",
+    "openSettings": "Open Settings",
+    "runBuild": "Run build",
+    "rebuild": "Rebuild"
+  },
+  "appTitle": "School CI Server",
+  "init": {
+    "description": {
+      "firstRow": "Configure repository connection",
+      "secondRow": "and synchronization settings"
+    }
+  },
+  "footer": {
+    "copyright": "© 2020 Your Name",
+    "links": {
+      "support": "Support",
+      "learning": "Learning",
+      "lang": "Русская версия"
+    }
+  },
+  "settings": {
+    "form": {
+      "title": "Settings",
+      "description": "Configure repository connection and synchronization settings.",
+      "messages": {
+        "success": "Repo was cloned successfully",
+        "error": "Error! Repo wasn't cloned"
+      },
+      "repo": "GitHub repository",
+      "repoPlaceholder": "user-name/repo-name",
+      "command": "Build command",
+      "commandPlaceholder": "enter command to run",
+      "branch": "Main branch",
+      "branchPlaceholder": "master",
+      "period": "Synchronize every",
+      "periodPlaceholder": "10",
+      "periodUnits": "minute",
+      "periodUnits_plural": "minutes"
+    }
+  },
+  "interval": "{{hours}} h {{minutes}} min"
+}

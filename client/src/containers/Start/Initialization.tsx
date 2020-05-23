@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import '../../style.css';
 import '../../vars.css';
 
@@ -7,9 +8,10 @@ import ActionCard from "../../ui/ActionCard/ActionCard";
 import Page from "../Page/Page";
 
 const Initialization: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const header = {
         logo: true,
-        text: 'School CI Server',
+        text: t('appTitle'),
         link: '/',
         buttons: []
     };
@@ -17,6 +19,7 @@ const Initialization: React.FC = () => {
     return (
         <Page header={header}>
             <LayoutContent centered>
+                {t('buttons.settings')}
                 <ActionCard
                     description="Initialization"/>
             </LayoutContent>

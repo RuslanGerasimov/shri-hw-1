@@ -1,5 +1,6 @@
 import React, {Fragment, useEffect} from "react";
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import * as actions from "../../store/builds/actions";
 import {connect} from "react-redux";
 import Commit from "../../ui/Commit/Commit";
@@ -21,6 +22,7 @@ const mapsDispatchToProps = (dispatch: ThunkDispatch<any, any, any>) => {
 };
 
 const Commits: React.FC<CommitsPros> = (props) => {
+    const {t, i18n} = useTranslation();
     const history = useHistory();
     useEffect(() => {
         props.fetchBuilds();
@@ -28,8 +30,9 @@ const Commits: React.FC<CommitsPros> = (props) => {
 
     const builds = props.builds.map((item) => {
         const commitType = item.status.toLowerCase();
-        const formattedDate = formatDate(item.start);
+        const formattedDate = formatDate(item.start, i18n.language);
         const duration = formatDuration(item.duration);
+        const interval: string = duration ? t('interval', { hours: duration.hours, minutes: duration.minutes }) : '-';
 
         return <Commit
             number={item.buildNumber}
@@ -39,7 +42,7 @@ const Commits: React.FC<CommitsPros> = (props) => {
             author={item.authorName}
             type={commitType}
             date={formattedDate ? formattedDate : '-'}
-            interval={duration ? duration : '-'}
+            interval={interval}
             clicked={() => {history.push('/build/' + item.id)}}  key={item.id}/>;
     });
     return (

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useTranslation} from "react-i18next";
 
 import '../../style.css';
 import '../../vars.css';
@@ -13,9 +14,10 @@ import {connect} from "react-redux";
 import {Settings} from "../../store/settings/type";
 
 const Builds: React.FC<{title?: string}> = (props) => {
+    const {t} = useTranslation();
     const [buildModal, setBuildModal] = useState(false);
     const buttons = [
-        <Button text="Run build" clicked={() => { setBuildModal(!buildModal) }} key="play" type="play" />,
+        <Button text={t('buttons.runBuild')} clicked={() => { setBuildModal(!buildModal) }} key="play" type="play" />,
         <Button link="/settings" type="settings" key="settings"  />,
     ];
 

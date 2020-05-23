@@ -1,5 +1,6 @@
-import React from 'react';
+import React  from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import '../../style.css';
 import '../../vars.css';
 
@@ -9,21 +10,25 @@ import ActionCard from "../../ui/ActionCard/ActionCard";
 import Page from "../Page/Page";
 
 const Start: React.FC = () => {
+    const { t, i18n } = useTranslation();
+
     const header = {
         logo: true,
-        text: 'School CI Server',
+        text: t('appTitle'),
         link: '/',
-        buttons: [<Button link="/settings" key="settings" type="settings" text="Settings"/>]
+        buttons: [
+            <Button link="/settings" key="settings" type="settings" text={t('buttons.settings')}/>
+        ]
     };
 
     return (
-        <Page header={header}>
-            <LayoutContent centered>
-                <ActionCard
-                    button={<Link to="/settings"><Button large primary text="Open settings"/></Link>}
-                />
-            </LayoutContent>
-        </Page>
+            <Page header={header}>
+                <LayoutContent centered>
+                    <ActionCard
+                        button={<Link to="/settings"><Button large primary text={t('buttons.openSettings')}/></Link>}
+                    />
+                </LayoutContent>
+            </Page>
     );
 };
 

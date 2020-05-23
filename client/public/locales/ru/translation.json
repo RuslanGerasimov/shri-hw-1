@@ -1,0 +1,45 @@
+{
+  "buttons": {
+    "settings": "Настройки",
+    "openSettings": "Настроить",
+    "runBuild": "Запустить сборку",
+    "rebuild": "Собрать заново"
+  },
+  "appTitle": "Учебный CI Server",
+  "init": {
+    "description": {
+      "firstRow": "Настройте подключение к репозиторию",
+      "secondRow": "и параметры синхронизации"
+    }
+  },
+  "footer": {
+    "copyright": "© 2020 Герасимов Руслан",
+    "links": {
+      "support": "Поддержка",
+      "learning": "Обучение",
+      "lang": "English version"
+    }
+  },
+  "settings": {
+    "form": {
+      "title": "Настройки",
+      "description": "Укажите репозиторий и параметры синхронизации.",
+      "messages": {
+        "success": "Репозиторий клонирован успешно",
+        "error": "Ошибка при клонировании репозитория"
+      },
+      "repo": "GitHub репозиторий",
+      "repoPlaceholder": "user-name/repo-name",
+      "command": "Команда сборки",
+      "commandPlaceholder": "npm i && npm run build",
+      "branch": "Основная ветка",
+      "branchPlaceholder": "master",
+      "period": "Синхронизировать каждые",
+      "periodPlaceholder": "10",
+      "periodUnits_0": "минута",
+      "periodUnits_1": "минуты",
+      "periodUnits_2": "минут"
+    }
+  },
+  "interval": "{{hours}} ч {{minutes}} мин"
+}
