@@ -26,7 +26,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "hermione": "^3.1.0",
-    "mocha": "^7.1.1",
+    "mocha": "^10.2.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
